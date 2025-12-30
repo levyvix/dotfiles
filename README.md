@@ -14,6 +14,39 @@ Meus dotfiles do Omarchy gerenciados com [chezmoi](https://chezmoi.io/).
 - **~/.bashrc**: Aliases e funções customizadas
 - **~/.XCompose**: Definições de emoji
 
+## ⚡ Workflow Super Simplificado (Recomendado)
+
+### Alias `dots-sync`
+
+O `.zshrc` já inclui um alias que faz tudo de uma vez:
+
+```bash
+# Edite seus arquivos normalmente
+vim ~/.config/hypr/hyprland.conf
+vim ~/.config/waybar/config.jsonc
+vim ~/.bashrc
+
+# Sincronize TUDO com um comando
+dots-sync
+```
+
+O alias `dots-sync` executa:
+1. `chezmoi re-add` - Re-adiciona todas as mudanças dos arquivos gerenciados
+2. `chezmoi cd` - Vai para o diretório do chezmoi
+3. `git commit -am "Update configs"` - Commita com mensagem padrão
+4. `git push` - Envia para GitHub
+
+**Fim!** Seus dotfiles estão sincronizados no GitHub.
+
+### Para Arquivos Novos (que nunca foram adicionados)
+
+```bash
+chezmoi add ~/.config/novo-app/config.toml
+dots-sync  # Sincroniza
+```
+
+---
+
 ## 🚀 Instalação em Nova Máquina
 
 ### Pré-requisitos
