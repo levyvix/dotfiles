@@ -1,0 +1,5 @@
+include "%H/.local/share/omarchy/default/xcompose"
+
+# Identification
+<Multi_key> <space> <n> : "levy nunes"
+<Multi_key> <space> <e> : "levy.vix@gmail.com"

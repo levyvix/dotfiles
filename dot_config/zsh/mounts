@@ -1,0 +1,32 @@
+#=================================================
+#        🚀 Mount Point Status Check
+#=================================================
+# Checks if specific network shares are mounted.
+# Uses Nerd Font icons for visual feedback.
+#=================================================
+
+echo "💾 Mounts Status:"
+
+# --- Check for Gigachad ---
+if mountpoint -q /mnt/gigachad; then
+  echo -e "  \e[32m\e[0m Gigachad  - Mounted"
+else
+  echo -e "  \e[31m\e[0m Gigachad  - Not Mounted"
+fi
+
+# --- Check for Terachad ---
+if mountpoint -q /mnt/terachad; then
+  echo -e "  \e[32m\e[0m Terachad  - Mounted"
+else
+  echo -e "  \e[31m\e[0m Terachad  - Not Mounted"
+fi
+
+# --- Check for Docker ---
+if mountpoint -q /mnt/data; then
+  echo -e "  \e[32m\e[0m Data    - Mounted"
+else
+  echo -e "  \e[31m\e[0m Data    - Not Mounted"
+fi
+
+# Add a newline for spacing before the next command in your shell
+echo ""

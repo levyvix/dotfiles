@@ -1,0 +1,32 @@
+# ============================================
+# ZSH Plugins Configuration
+# ============================================
+
+# Auto-suggestions (Fish-like history suggestions)
+if [[ -f ~/projects/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh ]]; then
+  source ~/projects/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+  # Configuration for zsh-autosuggestions
+  export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+  export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+  # Bind Ctrl+Space to accept autosuggestion
+  bindkey '^ ' autosuggest-accept
+fi
+
+# fzf-tab configuration (loaded in shell before compinit)
+# Configure fzf-tab behavior
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+zstyle ':fzf-tab:complete:*' fzf-preview 'less ${(Q)realpath}'
+# Use bat for file previews if available
+if command -v bat &> /dev/null; then
+  zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $realpath 2>/dev/null || ls -la $realpath'
+fi
+
+# Syntax highlighting - MUST BE LAST
+if [[ -f ~/projects/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  source ~/projects/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+  # Configuration for zsh-syntax-highlighting
+  # Set custom color scheme (optional)
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+fi

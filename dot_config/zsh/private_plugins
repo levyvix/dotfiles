@@ -1,0 +1,39 @@
+# ============================================
+# ZSH Plugins com Lazy Loading
+# ============================================
+
+# fzf-tab configuration (configuração apenas, plugin já carregado no shell)
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+zstyle ':fzf-tab:complete:*' fzf-preview 'less ${(Q)realpath}'
+if command -v bat &> /dev/null; then
+  zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $realpath 2>/dev/null || ls -la $realpath'
+fi
+
+# ============================================
+# Lazy Loading de Plugins Pesados
+# ============================================
+
+# Auto-suggestions - Carrega imediatamente (essencial para UX)
+if [[ -f ~/projects/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh ]]; then
+  source ~/projects/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+  export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+  export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+  bindkey '^ ' autosuggest-accept
+fi
+
+# Syntax highlighting - LAZY LOAD (só carrega após primeiro comando)
+# Economiza ~500ms no startup
+if [[ -f ~/projects/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  # Carrega o plugin em background após o prompt aparecer
+  function _load_zsh_syntax_highlighting() {
+    source ~/projects/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+    # Remove este hook depois de carregar
+    add-zsh-hook -d precmd _load_zsh_syntax_highlighting
+  }
+
+  # Adiciona hook para carregar no primeiro precmd (antes do primeiro prompt)
+  autoload -U add-zsh-hook
+  add-zsh-hook precmd _load_zsh_syntax_highlighting
+fi

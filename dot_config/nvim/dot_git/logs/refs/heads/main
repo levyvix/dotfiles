@@ -1,0 +1,4 @@
+0000000000000000000000000000000000000000 b1941d3fff77ea5f4e944b0d716db29276e00366 Levy Nunes <levy.vix@gmail.com> 1765486333 -0300	commit (initial): Override bufferline colors for osaka jade theme to show white text on selected buffer
+b1941d3fff77ea5f4e944b0d716db29276e00366 e8d41639655be4696a292093d224818616eae4f9 Levy Nunes <levy.vix@gmail.com> 1765486471 -0300	commit: Add entire neovim config with bufferline colors override
+e8d41639655be4696a292093d224818616eae4f9 6cfc43b67dd882baefd3777928480790f269143c Levy Nunes <levy.vix@gmail.com> 1766016175 -0300	commit: float term and markdown
+6cfc43b67dd882baefd3777928480790f269143c 7c1b1598eef8486829c41ab4cd00a67e88f1b38e Levy Nunes <levy.vix@gmail.com> 1766690524 -0300	commit: feat: add vscode-diff.nvim plugin for visual diff comparison

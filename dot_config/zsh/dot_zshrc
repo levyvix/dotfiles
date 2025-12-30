@@ -1,0 +1,64 @@
+source ~/.config/zsh/shell
+source ~/.config/zsh/init
+source ~/.config/zsh/envs
+source ~/.config/zsh/aliases
+source ~/.config/zsh/prompt
+source ~/.config/zsh/inputrc
+[[ -r ~/.config/zsh/secrets ]] && source ~/.config/zsh/secrets
+
+# ============================================
+# ZSH Plugins - Manual Installation
+# ============================================
+source ~/.config/zsh/plugins
+
+# ============================================
+# source from Omarchy
+# ============================================
+source ~/.local/share/omarchy/default/bash/aliases
+source ~/.local/share/omarchy/default/bash/functions
+source ~/.local/share/omarchy/default/bash/envs
+
+# ============================================
+# Tool Integrations
+# ============================================
+
+# FZF e Zoxide já estão carregados com cache no arquivo init
+# Não precisa fazer eval novamente aqui
+
+cl() { fc -ln -1 | wl-copy; }
+
+alias flatrld='bash ~/.local/share/omarchy/bin/omarchy-restart-walker'
+
+# autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Direnv com cache para evitar lentidão
+if command -v direnv &> /dev/null; then
+  _DIRENV_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/direnv/init.zsh"
+  if [[ ! -f "$_DIRENV_CACHE" ]] || [[ "$(command -v direnv)" -nt "$_DIRENV_CACHE" ]]; then
+    mkdir -p "${_DIRENV_CACHE:h}"
+    direnv hook zsh > "$_DIRENV_CACHE"
+  fi
+  source "$_DIRENV_CACHE"
+  unset _DIRENV_CACHE
+fi
+
+# Carrega env se necessário
+if [[ -f "$HOME/.local/bin/env" ]]; then
+  . "$HOME/.local/bin/env"
+fi
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+# ALIAS
+alias zshconfig="nvim ~/.zshrc"
+alias nvimconfig="nvim ~/.config/nvim/"
+alias cldy="claude --dangerously-skip-permissions"
+alias sourcez="source ~/.zshrc"
+alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
