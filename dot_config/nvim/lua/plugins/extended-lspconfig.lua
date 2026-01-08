@@ -1,10 +1,7 @@
 return {
   require('lspconfig').ruff.setup{
-    settings = {
-        -- Any extra CLI arguments for `ruff` go here.
-        args = {
-            "--line-length=100",
-        },
-      },
+    -- Ruff agora usa o arquivo de configuração em ~/.config/ruff/ruff.toml
+    -- ou ruff.toml/pyproject.toml no diretório do projeto
+    settings = {},
   },
 }

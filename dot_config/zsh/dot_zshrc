@@ -1,3 +1,10 @@
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+fpath=("/home/levi/.zsh/completions" $fpath)
+autoload -Uz compinit
+compinit
+# OPENSPEC:END
+
 source ~/.config/zsh/shell
 source ~/.config/zsh/init
 source ~/.config/zsh/envs
@@ -63,3 +70,9 @@ alias cldy="claude --dangerously-skip-permissions"
 alias sourcez="source ~/.zshrc"
 alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias dots-sync='chezmoi re-add && chezmoi cd && git commit -am "Update configs" && git push'
+
+# Monitor de Legendas
+alias monitor-legendas='uv run --with subliminal --with watchdog --with babelfish ~/.local/bin/monitor-legendas.py'
+alias legendas-stats='uv run --with subliminal --with watchdog --with babelfish ~/.local/bin/monitor-legendas.py --stats'
+alias legendas-reset='uv run --with subliminal --with watchdog --with babelfish ~/.local/bin/monitor-legendas.py --reset'
+alias ani='ani-tupi anilist'
