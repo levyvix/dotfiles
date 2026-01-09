@@ -4,3 +4,5 @@ b1941d3fff77ea5f4e944b0d716db29276e00366 b1941d3fff77ea5f4e944b0d716db29276e0036
 b1941d3fff77ea5f4e944b0d716db29276e00366 e8d41639655be4696a292093d224818616eae4f9 Levy Nunes <levy.vix@gmail.com> 1765486471 -0300	commit: Add entire neovim config with bufferline colors override
 e8d41639655be4696a292093d224818616eae4f9 6cfc43b67dd882baefd3777928480790f269143c Levy Nunes <levy.vix@gmail.com> 1766016175 -0300	commit: float term and markdown
 6cfc43b67dd882baefd3777928480790f269143c 7c1b1598eef8486829c41ab4cd00a67e88f1b38e Levy Nunes <levy.vix@gmail.com> 1766690524 -0300	commit: feat: add vscode-diff.nvim plugin for visual diff comparison
+7c1b1598eef8486829c41ab4cd00a67e88f1b38e f0c0f503e68f65891c0c5070633286c8e7a40032 Levy Nunes <levy.vix@gmail.com> 1767922189 -0300	commit: some changes
+f0c0f503e68f65891c0c5070633286c8e7a40032 a63b46accb6ca97b30ea5faf9fcec37313a080d9 Levy Nunes <levy.vix@gmail.com> 1767922272 -0300	commit: change keymaps to toggle

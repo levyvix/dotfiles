@@ -10,7 +10,7 @@ return {
     {
       "<leader>-",
       mode = { "n", "v" },
-      "<cmd>Yazi<cr>",
+      "<cmd>Yazi toggle<cr>",
       desc = "Open yazi at the current file",
     },
     {
@@ -21,7 +21,7 @@ return {
     },
     {
       "<c-up>",
-      "<cmd>Yazi toggle<cr>",
+      "<cmd>Yazi<cr>",
       desc = "Resume the last yazi session",
     },
   },

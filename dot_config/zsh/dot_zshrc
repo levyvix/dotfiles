@@ -69,7 +69,7 @@ alias nvimconfig="nvim ~/.config/nvim/"
 alias cldy="claude --dangerously-skip-permissions"
 alias sourcez="source ~/.zshrc"
 alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias dots-sync='chezmoi re-add && chezmoi cd && git commit -am "Update configs" && git push'
+alias dots-sync='chezmoi re-add && chezmoi cd && echo "git add..." && git add . && echo "commit..." && git commit -m "Update configs" && echo "pusing" && git push'
 
 # Monitor de Legendas
 alias monitor-legendas='uv run --with subliminal --with watchdog --with babelfish ~/.local/bin/monitor-legendas.py'
