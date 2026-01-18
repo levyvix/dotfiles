@@ -7,15 +7,20 @@ autoload -Uz add-zsh-hook
 
 starship preset bracketed-segments -o ~/.config/starship.toml
 
-# Disable gcloud module
+# Disable gcloud and scala modules
 python3 << 'PYTHON'
 import re
 with open("/home/levi/.config/starship.toml", "r") as f:
     content = f.read()
 # Remove all gcloud sections (could be duplicates)
-content = re.sub(r'\n\[gcloud\].*?(?=\n\[|\Z)', '', content, flags=re.DOTALL)
-# Add disabled gcloud at the end
-content += "[gcloud]\ndisabled = true\n"
+content = re.sub(r'\[gcloud\].*?(?=\n\[|\Z)', '', content, flags=re.DOTALL)
+# Remove all scala sections (could be duplicates)
+content = re.sub(r'\[scala\].*?(?=\n\[|\Z)', '', content, flags=re.DOTALL)
+# Ensure file ends with newline
+if not content.endswith('\n'):
+    content += '\n'
+# Add disabled gcloud and scala at the end
+content += "\n[gcloud]\ndisabled = true\n\n[scala]\ndisabled = true\n"
 with open("/home/levi/.config/starship.toml", "w") as f:
     f.write(content)
 PYTHON

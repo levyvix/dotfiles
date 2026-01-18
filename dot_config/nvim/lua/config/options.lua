@@ -5,6 +5,3 @@ vim.opt.relativenumber = true
 
 -- Disable animations globally
 vim.g.snacks_animate = false
-
--- Disable inlay hints
-vim.lsp.inlay_hint.enable(false)

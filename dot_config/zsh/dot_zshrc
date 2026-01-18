@@ -31,7 +31,6 @@ source ~/.local/share/omarchy/default/bash/envs
 
 # FZF e Zoxide já estão carregados com cache no arquivo init
 # Não precisa fazer eval novamente aqui
-
 cl() { fc -ln -1 | wl-copy; }
 
 alias flatrld='bash ~/.local/share/omarchy/bin/omarchy-restart-walker'
@@ -66,13 +65,16 @@ function y() {
 # ALIAS
 alias zshconfig="nvim ~/.zshrc"
 alias nvimconfig="nvim ~/.config/nvim/"
-alias cldy="claude --dangerously-skip-permissions"
+alias cldy="ENABLE_TOOL_SEARCH=true claude --dangerously-skip-permissions"
 alias sourcez="source ~/.zshrc"
 alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias dots-sync='chezmoi re-add && chezmoi cd && echo "git add..." && git add . && echo "commit..." && git commit -m "Update configs" && echo "pusing" && git push'
+alias zat='zathura'
+
 
 # Monitor de Legendas
 alias monitor-legendas='uv run --with subliminal --with watchdog --with babelfish ~/.local/bin/monitor-legendas.py'
-alias legendas-stats='uv run --with subliminal --with watchdog --with babelfish ~/.local/bin/monitor-legendas.py --stats'
-alias legendas-reset='uv run --with subliminal --with watchdog --with babelfish ~/.local/bin/monitor-legendas.py --reset'
 alias ani='ani-tupi anilist'
+
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/share/coursier/bin:$PATH"
