@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+cd ~/.local/share/chezmoi
+
+echo "Re-adding dotfiles..."
+chezmoi re-add
+
+echo "Checking for changes..."
+if ! git diff --quiet || ! git diff --cached --quiet; then
+    echo "Changes detected, committing..."
+    git add .
+    git commit -m "Update configs"
+    echo "Pushing to GitHub..."
+    git push
+    echo "✓ Sync complete"
+else
+    echo "No changes to sync"
+fi
