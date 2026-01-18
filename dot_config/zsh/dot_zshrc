@@ -68,7 +68,6 @@ alias nvimconfig="nvim ~/.config/nvim/"
 alias cldy="ENABLE_TOOL_SEARCH=true claude --dangerously-skip-permissions"
 alias sourcez="source ~/.zshrc"
 alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias dots-sync='chezmoi re-add && chezmoi cd && echo "git add..." && git add . && echo "commit..." && git commit -m "Update configs" && echo "pusing" && git push'
 alias zat='zathura'
 
 
