@@ -1,0 +1,1 @@
+/home/levi/.config/zsh/.zshrc

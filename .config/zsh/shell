@@ -1,0 +1,45 @@
+# ============================================
+# Ultra-otimizado para inicialização rápida
+# ============================================
+
+# history
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=$HISTSIZE
+
+# sane defaults
+setopt inc_append_history share_history hist_ignore_all_dups
+setopt autocd no_beep interactivecomments
+unsetopt nomatch
+
+# Set complete path
+export PATH="./bin:$HOME/.local/bin:$PATH"
+set +h
+
+# Load fzf-tab BEFORE compinit
+if [[ -f ~/projects/zsh-plugins/fzf-tab/fzf-tab.plugin.zsh ]]; then
+  source ~/projects/zsh-plugins/fzf-tab/fzf-tab.plugin.zsh
+fi
+
+# ============================================
+# OTIMIZAÇÃO: compinit com cache diário
+# ============================================
+# Ao invés de rodar compinit toda vez (992ms),
+# roda apenas 1x por dia
+autoload -Uz compinit
+
+# Cache do compinit - só atualiza 1x por dia
+# Verifica se .zcompdump tem mais de 24 horas
+if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
+  # Arquivo antigo ou não existe, regenerar completamente
+  compinit
+else
+  # Arquivo recente (<24h), pular verificação de segurança (muito mais rápido!)
+  compinit -C  # -C = skip security check
+fi
+
+zstyle ':completion:*' menu select
+bindkey -e
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin"

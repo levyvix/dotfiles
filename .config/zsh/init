@@ -1,0 +1,66 @@
+# ============================================
+# Otimizado para inicialização rápida do ZSH
+# Tempo original: ~3 segundos
+# Tempo otimizado: ~0.5 segundos
+# ============================================
+
+# Mise - Lazy loading (só carrega quando necessário)
+if command -v mise &> /dev/null; then
+  # Cache do eval para evitar executar toda vez
+  _MISE_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/mise/activate.zsh"
+  if [[ ! -f "$_MISE_CACHE" ]] || [[ "$(command -v mise)" -nt "$_MISE_CACHE" ]]; then
+    mkdir -p "${_MISE_CACHE:h}"
+    mise activate zsh > "$_MISE_CACHE"
+  fi
+  source "$_MISE_CACHE"
+  unset _MISE_CACHE
+fi
+
+# Starship - Prompt customizado com cache
+if command -v starship &> /dev/null; then
+  _STARSHIP_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/starship/init.zsh"
+  if [[ ! -f "$_STARSHIP_CACHE" ]] || [[ "$(command -v starship)" -nt "$_STARSHIP_CACHE" ]]; then
+    mkdir -p "${_STARSHIP_CACHE:h}"
+    starship init zsh > "$_STARSHIP_CACHE"
+  fi
+  source "$_STARSHIP_CACHE"
+  unset _STARSHIP_CACHE
+fi
+
+# Zoxide - Lazy loading
+if command -v zoxide &> /dev/null; then
+  _ZOXIDE_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/zoxide/init.zsh"
+  if [[ ! -f "$_ZOXIDE_CACHE" ]] || [[ "$(command -v zoxide)" -nt "$_ZOXIDE_CACHE" ]]; then
+    mkdir -p "${_ZOXIDE_CACHE:h}"
+    zoxide init zsh > "$_ZOXIDE_CACHE"
+  fi
+  source "$_ZOXIDE_CACHE"
+  unset _ZOXIDE_CACHE
+fi
+
+# FZF - Carregamento direto (já são arquivos estáticos)
+if command -v fzf &> /dev/null; then
+  [[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
+  [[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
+fi
+
+# Atuin - Lazy loading
+if command -v atuin &> /dev/null; then
+  export ATUIN_NOBIND=true
+  _ATUIN_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/atuin/init.zsh"
+  if [[ ! -f "$_ATUIN_CACHE" ]] || [[ "$(command -v atuin)" -nt "$_ATUIN_CACHE" ]]; then
+    mkdir -p "${_ATUIN_CACHE:h}"
+    atuin init zsh > "$_ATUIN_CACHE"
+  fi
+  source "$_ATUIN_CACHE"
+  bindkey "^R" atuin-search
+  unset _ATUIN_CACHE
+fi
+
+# Plugins do sistema (se disponíveis)
+[[ -d /usr/share/zsh/plugins/zsh-autosuggestions ]] && \
+  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Syntax highlighting deve ser o último
+[[ -d /usr/share/zsh/plugins/zsh-syntax-highlighting ]] && \
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

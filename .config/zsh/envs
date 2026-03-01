@@ -1,0 +1,21 @@
+export OPENAI_API_BASE="https://openrouter.ai/api/v1"
+export DEFAULT_MODEL="o1-mini";
+export OLLAMA_API_BASE=http://127.0.0.1:11434
+export OLLAMA_HOME=http://127.0.0.1:11434
+export OLLAMA_MODELS=/mnt/gigachad/ollama/models
+
+# Editor for CLI tools
+export SUDO_EDITOR="$EDITOR"
+export BAT_THEME=ansi
+
+# Homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Bruin environment
+. "$HOME/.bruin/env"
+
+# Mise (tool version manager)
+eval "$(mise activate zsh)"
+
+# User local bin
+export PATH="$HOME/.local/bin:$PATH"

@@ -1,0 +1,16 @@
+# Nested git repos (managed separately)
+.config/nvim/.git
+.config/nvim/.git/**
+.config/zsh/.git
+.config/zsh/.git/**
+
+# Backup files
+*.bak
+*.bak.*
+*.backup
+init.backup
+shell.backup
+plugins.backup-lazy
+
+# Secrets / private cache
+.config/zsh/secrets
