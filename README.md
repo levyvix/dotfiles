@@ -4,15 +4,38 @@ Meus dotfiles do Omarchy gerenciados com [yadm](https://yadm.io/).
 
 ## 📦 Conteúdo
 
-- **Hyprland**: Configurações do window manager (keybindings, monitors, input)
-- **Waybar**: Configuração da barra de status
-- **Ghostty**: Configuração do terminal
-- **Neovim/LazyVim**: Configurações do editor
-- **Walker**: Configuração do app launcher
-- **ZSH**: Configurações do shell
+### Desktop
+- **Hyprland**: Window manager (keybindings, monitors, input)
+- **Waybar**: Barra de status
+- **Mako**: Notificações
 - **UWSM**: Defaults do sistema
+
+### Terminal & Shell
+- **Ghostty / Alacritty / Kitty**: Terminais
+- **ZSH**: Configurações do shell
+- **Fish**: Shell alternativo
+- **Tmux**: Multiplexer de terminal
+- **Starship**: Prompt
 - **~/.bashrc**: Aliases e funções customizadas
 - **~/.XCompose**: Definições de emoji
+
+### Editores
+- **Neovim/LazyVim**: Configurações do editor
+
+### Ferramentas
+- **Git**: Gitconfig global e gitignore global
+- **Lazygit / Lazydocker**: TUIs de git e docker
+- **Yazi**: File manager
+- **Btop**: Monitor de recursos
+- **Fastfetch**: Info do sistema
+- **MPV**: Player de vídeo
+- **Zathura**: Leitor de PDF
+- **Mise**: Gerenciador de versões
+- **Jj**: Alternativa ao git
+
+### Apps & Sistema
+- **Walker**: App launcher
+- **Mimeapps**: Apps padrão por tipo de arquivo
 
 ## ⚡ Workflow Simplificado
 
