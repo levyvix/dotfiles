@@ -14,3 +14,6 @@ plugins.backup-lazy
 
 # Secrets / private cache
 .config/zsh/secrets
+
+# jj repo-specific data
+.config/jj/repos/

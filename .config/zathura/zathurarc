@@ -1,0 +1,17 @@
+# Zathura configuration for ani-tupi
+# Generated automatically - safe to edit
+
+set zoom fit-width
+set scroll-step 50
+# Scroll suave
+map <Down> scroll down
+# Setas para navegação vertical
+map <Up> scroll up
+map j scroll down
+# Vim keys para scroll
+map k scroll up
+map <Right> navigate next
+# Page navigation apenas com PageDown/PageUp
+map <Left> navigate previous
+map <PageDown> navigate next
+map <PageUp> navigate previous
