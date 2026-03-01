@@ -67,7 +67,6 @@ alias zshconfig="nvim ~/.zshrc"
 alias nvimconfig="nvim ~/.config/nvim/"
 alias cld="claude --dangerously-skip-permissions"
 alias zsource="source ~/.zshrc"
-alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias zat='zathura'
 alias to='webtorrent --mpv "$(wl-paste)" --player-args="--fullscreen --speed=1.8"'
 
