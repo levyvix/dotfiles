@@ -7,7 +7,7 @@ return {
           settings = {
             python = {
               analysis = {
-                typeCheckingMode = "standard",
+                typeCheckingMode = "basic",
               },
             },
           },
