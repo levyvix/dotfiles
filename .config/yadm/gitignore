@@ -17,3 +17,12 @@ plugins.backup-lazy
 
 # jj repo-specific data
 .config/jj/repos/
+
+# Claude Code - ignorar dados temporários e sensíveis
+.claude/projects/
+.claude/debug/
+.claude/backups/
+.claude/cache/
+.claude/todos/
+.claude/.credentials.json
+.claude/statsig/
