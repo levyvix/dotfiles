@@ -7,7 +7,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bunx -y ccstatusline@latest",
+    "command": "/home/levi/.claude/statusline.sh",
     "padding": 0
   },
   "enabledPlugins": {
@@ -19,5 +19,6 @@
   },
   "skipDangerousModePermissionPrompt": true,
   "effortLevel": "low",
-  "ENABLE_LSP_TOOL": "1"
+  "ENABLE_LSP_TOOL": "1",
+  "model": "haiku"
 }

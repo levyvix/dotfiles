@@ -14,3 +14,24 @@ Prefer LSP over Grep/Read for code navigation — it's faster, precise, and avoi
 Use Grep only when LSP isn't available or for text/pattern searches (comments, strings, config).
 
 After writing or editing code, check LSP diagnostics and fix errors before proceeding.
+
+### Database Migrations (Yoyo)
+
+Use Yoyo for all database schema changes. Migrations are stored in `src/comando_cli/migrations/`.
+
+**Creating a new migration:**
+1. Create a new file: `NNN_description.py` (use next sequential number)
+2. Use the pattern:
+```python
+from yoyo import step
+
+steps = [
+    step(
+        "ALTER TABLE table_name ADD COLUMN new_col TEXT",
+        "ALTER TABLE table_name DROP COLUMN new_col"
+    ),
+]
+```
+3. Migrations run automatically on Database init via `run_migrations()`
+
+**Rollback:** Delete the migration file and yoyo will handle reverting on next run.
