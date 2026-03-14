@@ -76,6 +76,7 @@ alias monitor-legendas='uv run --with subliminal --with watchdog --with babelfis
 alias ani='ani-tupi --skip anilist'
 alias manga='manga-tupi anilist'
 
+export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/share/coursier/bin:$PATH"
 

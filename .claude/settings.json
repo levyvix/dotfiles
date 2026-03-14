@@ -5,6 +5,7 @@
     ],
     "defaultMode": "dontAsk"
   },
+  "model": "sonnet",
   "statusLine": {
     "type": "command",
     "command": "/home/levi/.claude/statusline.sh",
@@ -17,8 +18,7 @@
     "pyright-lsp@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true
   },
-  "skipDangerousModePermissionPrompt": true,
   "effortLevel": "low",
-  "ENABLE_LSP_TOOL": "1",
-  "model": "haiku"
+  "skipDangerousModePermissionPrompt": true,
+  "ENABLE_LSP_TOOL": "1"
 }
