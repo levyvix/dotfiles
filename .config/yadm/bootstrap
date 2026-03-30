@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+echo "==> Instalando pacotes do repositório oficial..."
+sudo pacman -S --needed - < ~/.config/packages/pacman.txt
+
+echo "==> Instalando pacotes do AUR..."
+if command -v paru &>/dev/null; then
+    paru -S --needed - < ~/.config/packages/aur.txt
+elif command -v yay &>/dev/null; then
+    yay -S --needed - < ~/.config/packages/aur.txt
+else
+    echo "AVISO: nenhum helper AUR encontrado (paru/yay). Instale manualmente os pacotes em ~/.config/packages/aur.txt"
+fi
+
+echo "==> Pronto!"
