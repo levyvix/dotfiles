@@ -34,5 +34,5 @@
 	enabled = true           # Record and reuse conflict resolutions
 	autoupdate = true        # Apply stored conflict resolutions automatically
 [user]
-	email = levy.vix@gmail.com
+	email = "9471166+levyvix@users.noreply.github.com "
 	name = Levy Nunes

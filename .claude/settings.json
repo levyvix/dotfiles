@@ -5,7 +5,19 @@
     ],
     "defaultMode": "dontAsk"
   },
-  "model": "sonnet",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/levi/.claude/hooks/rtk-rewrite.sh"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "/home/levi/.claude/statusline.sh",
@@ -18,7 +30,18 @@
     "pyright-lsp@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true
   },
+  "language": "pt-br",
   "effortLevel": "low",
+  "voiceEnabled": false,
   "skipDangerousModePermissionPrompt": true,
-  "ENABLE_LSP_TOOL": "1"
+  "ENABLE_LSP_TOOL": "1",
+  "mcpServers": {
+    "entroly": {
+      "command": "entroly",
+      "args": [
+        "serve"
+      ]
+    }
+  },
+  "model": "haiku"
 }
