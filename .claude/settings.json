@@ -1,47 +1,40 @@
 {
+  "ENABLE_LSP_TOOL": "1",
+  "effortLevel": "low",
+  "enabledPlugins": {
+    "code-simplifier@claude-plugins-official": true,
+    "commit-commands@claude-code-plugins": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": false,
+    "pyright-lsp@claude-plugins-official": true
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "/home/levi/.claude/hooks/snip-rewrite.sh",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ]
+  },
+  "language": "pt-br",
+  "mcpServers": {},
+  "model": "haiku",
   "permissions": {
     "allow": [
       "Bash(uv run:*)"
     ],
     "defaultMode": "dontAsk"
   },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/home/levi/.claude/hooks/rtk-rewrite.sh"
-          }
-        ]
-      }
-    ]
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "/home/levi/.claude/statusline.sh",
-    "padding": 0
-  },
-  "enabledPlugins": {
-    "commit-commands@claude-code-plugins": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": false,
-    "pyright-lsp@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true
-  },
-  "language": "pt-br",
-  "effortLevel": "low",
-  "voiceEnabled": false,
   "skipDangerousModePermissionPrompt": true,
-  "ENABLE_LSP_TOOL": "1",
-  "mcpServers": {
-    "entroly": {
-      "command": "entroly",
-      "args": [
-        "serve"
-      ]
-    }
+  "statusLine": {
+    "command": "/home/levi/.claude/statusline.sh",
+    "padding": 0,
+    "type": "command"
   },
-  "model": "haiku"
+  "voiceEnabled": false
 }
