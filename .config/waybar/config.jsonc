@@ -122,6 +122,13 @@
     },
     "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
   },
+  "custom/weather": {
+    "exec": "$OMARCHY_PATH/default/waybar/weather.sh",
+    "return-type": "json",
+    "interval": 60,
+    "tooltip": false,
+    "on-click": "notify-send -u low \"$(omarchy-weather-status)\""
+  },
   "network": {
     "format-icons": [
       "󰤯",
@@ -134,8 +141,8 @@
     "format-wifi": "{icon}",
     "format-ethernet": "󰈀 ",
     "format-disconnected": "󰤮",
-    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)",
+    "tooltip-format-ethernet": "Connected",
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
@@ -177,6 +184,7 @@
     "tooltip-format-charging": "{timeTo}",
     "interval": 5,
     "on-click": "omarchy-menu power",
+    "on-click-right": "notify-send -u low \"$(omarchy-battery-status)\"",
     "states": {
       "warning": 20,
       "critical": 10
@@ -215,7 +223,9 @@
     "scroll-step": 2,
     "smooth-scrolling-threshold": 1,
     "on-click": "omarchy-launch-audio",
-    "on-click-right": "pamixer -t"
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGRTMIN+4 waybar",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2% && pkill -SIGRTMIN+4 waybar",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2% && pkill -SIGRTMIN+4 waybar"
   },
   "power-profiles-daemon": {
     "format": "{icon}",
@@ -252,7 +262,7 @@
     "exec": "waybar-module-pacman-updates --no-zero-output"
   },
   "custom/screenrecording-indicator": {
-    "on-click": "omarchy-cmd-screenrecord",
+    "on-click": "omarchy-capture-screenrecording",
     "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
     "signal": 8,
     "return-type": "json"

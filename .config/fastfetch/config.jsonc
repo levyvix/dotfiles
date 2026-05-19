@@ -101,9 +101,22 @@
       "keyColor": "blue"
     },
     {
-      "type": "packages",
+      "type": "command",
       "key": "│ ├󰏖",
-      "keyColor": "blue"
+      "keyColor": "blue",
+      "text": "pacman -Qi 2>/dev/null | grep 'Explicitly installed' | wc -l | awk '{print $1 \" (pacman apps)\"}'"
+    },
+    {
+      "type": "command",
+      "key": "│ ├",
+      "keyColor": "blue",
+      "text": "pacman -Qi 2>/dev/null | grep 'dependency' | wc -l | awk '{print $1 \" (pacman deps)\"}'"
+    },
+    {
+      "type": "command",
+      "key": "│ ├",
+      "keyColor": "blue",
+      "text": "flatpak list --app --columns=application | wc -l | awk '{print $1 \" (flatpak)\"}'"
     },
     {
       "type": "wmtheme",

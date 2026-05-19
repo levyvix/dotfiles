@@ -1,8 +1,5 @@
 {
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  },
+  "attribution": {},
   "permissions": {
     "allow": [
       "Bash(ls:*)",
@@ -19,6 +16,12 @@
           {
             "type": "command",
             "command": "/home/levi/.claude/hooks/rtk-rewrite.sh"
+          },
+          {
+            "type": "command",
+            "command": "/home/levi/.claude/hooks/sudo-passwordless-toggle.sh",
+            "if": "Bash(sudo*)",
+            "statusMessage": "Verificando sudo passwordless..."
           }
         ]
       }
@@ -34,9 +37,19 @@
     "commit-commands@claude-code-plugins": true,
     "gopls-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": false,
-    "pyright-lsp@claude-plugins-official": true
+    "pyright-lsp@claude-plugins-official": true,
+    "caveman@caveman": true
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    }
   },
   "language": "pt-br",
   "effortLevel": "medium",
+  "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true
 }

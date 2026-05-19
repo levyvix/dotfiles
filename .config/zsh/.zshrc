@@ -1,3 +1,4 @@
+export DO_NOT_TRACK=1
 # OPENSPEC:START
 # OpenSpec shell completions configuration
 fpath=("/home/levi/.zsh/completions" $fpath)
@@ -69,10 +70,20 @@ alias cld="claude --dangerously-skip-permissions"
 alias zsource="source ~/.zshrc"
 alias zat='zathura'
 alias to='webtorrent --mpv "$(wl-paste)" --player-args="--fullscreen --speed=1.8"'
+alias per='peerflix "$(wl-paste)" --mpv -a -r --- --fullscreen --speed=1.8'
+
+gb() {
+	local main_branch
+	main_branch=$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null)
+	main_branch=${main_branch#origin/}
+	if [[ -z "$main_branch" ]]; then
+		main_branch=main
+	fi
+	git checkout "$main_branch" && git pull --rebase
+}
 
 
 # Monitor de Legendas
-alias monitor-legendas='uv run --with subliminal --with watchdog --with babelfish ~/.local/bin/monitor-legendas.py'
 alias ani='ani-tupi --skip anilist'
 alias manga='manga-tupi anilist'
 
@@ -95,3 +106,6 @@ alias yay='echo "l123" | yay --color=always --answerdiff=None --noconfirm'
 
 # claude code lsp
 export ENABLE_LSP_TOOL=1
+
+# t-stream
+export PATH="$HOME/.local/bin:$PATH"
