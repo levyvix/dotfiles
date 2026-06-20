@@ -12,7 +12,7 @@ export BAT_THEME=ansi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Bruin environment
-. "$HOME/.bruin/env"
+[[ -r "$HOME/.bruin/env" ]] && . "$HOME/.bruin/env"
 
 # Mise (tool version manager)
 eval "$(mise activate zsh)"

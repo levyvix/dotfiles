@@ -6,6 +6,7 @@ export PATH=$OMARCHY_PATH/bin:$PATH:$HOME/.local/bin
 
 # Set default terminal and editor
 source ~/.config/uwsm/default
+export SHELL=/usr/bin/zsh
 
 # Activate mise if present on the system
 omarchy-cmd-present mise && eval "$(mise activate bash --shims)"

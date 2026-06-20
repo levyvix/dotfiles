@@ -14,26 +14,15 @@ fi
 # ============================================
 
 # Auto-suggestions - Carrega imediatamente (essencial para UX)
-if [[ -f ~/Documents/projects/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh ]]; then
-  source ~/Documents/projects/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
   export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
   export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
   bindkey '^ ' autosuggest-accept
 fi
 
-# Syntax highlighting - LAZY LOAD (só carrega após primeiro comando)
-# Economiza ~500ms no startup
-if [[ -f ~/Documents/projects/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-  # Carrega o plugin em background após o prompt aparecer
-  function _load_zsh_syntax_highlighting() {
-    source ~/Documents/projects/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
-    # Remove este hook depois de carregar
-    add-zsh-hook -d precmd _load_zsh_syntax_highlighting
-  }
-
-  # Adiciona hook para carregar no primeiro precmd (antes do primeiro prompt)
-  autoload -U add-zsh-hook
-  add-zsh-hook precmd _load_zsh_syntax_highlighting
+# Syntax highlighting should be loaded last
+if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 fi

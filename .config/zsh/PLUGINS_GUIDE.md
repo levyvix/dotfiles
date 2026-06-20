@@ -5,7 +5,7 @@
 This ZSH configuration includes three powerful plugins for an enhanced shell experience:
 
 ### 1. **zsh-autosuggestions**
-- **Location**: `~/projects/zsh-plugins/zsh-autosuggestions/`
+- **Location**: `/usr/share/zsh/plugins/zsh-autosuggestions/`
 - **What it does**: Suggests commands from your history as you type (like Fish shell)
 - **How to use**:
   - Start typing a command
@@ -14,7 +14,7 @@ This ZSH configuration includes three powerful plugins for an enhanced shell exp
   - Press `Escape` to dismiss the suggestion
 
 ### 2. **fzf-tab**
-- **Location**: `~/projects/zsh-plugins/fzf-tab/`
+- **Location**: System plugin path if installed
 - **What it does**: Replaces ZSH's default completion menu with an interactive fuzzy-searchable menu
 - **How to use**:
   - Press `TAB` after a partial command to open the fuzzy completion menu
@@ -25,7 +25,7 @@ This ZSH configuration includes three powerful plugins for an enhanced shell exp
 - **Example**: `git ch<TAB>` → shows all git branches starting with "ch"
 
 ### 3. **zsh-syntax-highlighting**
-- **Location**: `~/projects/zsh-plugins/zsh-syntax-highlighting/`
+- **Location**: `/usr/share/zsh/plugins/zsh-syntax-highlighting/`
 - **What it does**: Real-time syntax highlighting as you type
 - **How to use**:
   - Just type! Commands are highlighted as:
@@ -89,7 +89,8 @@ Edit `~/.config/zsh/plugins` to customize:
 ### Plugins not loading?
 ```bash
 # Check if the plugin files exist
-ls -la ~/projects/zsh-plugins/
+ls -la /usr/share/zsh/plugins/zsh-autosuggestions/
+ls -la /usr/share/zsh/plugins/zsh-syntax-highlighting/
 
 # Reload your shell
 exec zsh
@@ -158,12 +159,7 @@ Your setup integrates with:
 
 ## Update Instructions
 
-To update plugins to the latest version:
-```bash
-cd ~/projects/zsh-plugins/fzf-tab && git pull
-cd ~/projects/zsh-plugins/zsh-autosuggestions && git pull
-cd ~/projects/zsh-plugins/zsh-syntax-highlighting && git pull
-```
+To update plugins to the latest version, update them through `pacman`.
 
 ---
 

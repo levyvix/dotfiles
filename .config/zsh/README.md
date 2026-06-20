@@ -22,17 +22,17 @@ cd /tmp   # Appears GREEN (valid)
 ## Three Plugins Installed
 
 ### 1. fzf-tab - Interactive Autocompletion
-- **Location**: `~/projects/zsh-plugins/fzf-tab/`
+- **Location**: System plugin path if installed
 - **Use**: Press `TAB` for fuzzy-searchable completion menu
 - **Features**: Live preview with bat, works everywhere
 
 ### 2. zsh-autosuggestions - Smart History Suggestions
-- **Location**: `~/projects/zsh-plugins/zsh-autosuggestions/`
+- **Location**: `/usr/share/zsh/plugins/zsh-autosuggestions/`
 - **Use**: Types as you type (Fish-like experience)
 - **Accept with**: `Ctrl+Space` or `→`
 
 ### 3. zsh-syntax-highlighting - Real-Time Color Feedback
-- **Location**: `~/projects/zsh-plugins/zsh-syntax-highlighting/`
+- **Location**: `/usr/share/zsh/plugins/zsh-syntax-highlighting/`
 - **Colors**: Green (valid), Red (invalid), Cyan (alias), Yellow (args)
 - **Use**: Automatic - just type!
 
@@ -75,11 +75,7 @@ cd /tmp   # Appears GREEN (valid)
 
 ## Updates
 
-Update all plugins:
-```bash
-cd ~/projects/zsh-plugins
-for dir in */; do (cd "$dir" && git pull); done
-```
+Update plugins through `pacman`.
 
 ## Troubleshooting
 

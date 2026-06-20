@@ -1,5 +1,5 @@
+. "$HOME/.local/bin/env"
 
-. "$HOME/.local/share/../bin/env"
-
-# t-stream
-export PATH="$HOME/.local/bin:$PATH"
+if [[ -r "$HOME/.config/zsh/.zshrc" ]]; then
+  source "$HOME/.config/zsh/.zshrc"
+fi

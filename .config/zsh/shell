@@ -16,10 +16,8 @@ unsetopt nomatch
 export PATH="./bin:$HOME/.local/bin:$PATH"
 set +h
 
-# Load fzf-tab BEFORE compinit
-if [[ -f ~/projects/zsh-plugins/fzf-tab/fzf-tab.plugin.zsh ]]; then
-  source ~/projects/zsh-plugins/fzf-tab/fzf-tab.plugin.zsh
-fi
+# Load fzf-tab BEFORE compinit when available
+[[ -f /usr/share/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]] && source /usr/share/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 
 # ============================================
 # OTIMIZAÇÃO: compinit com cache diário
