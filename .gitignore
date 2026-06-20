@@ -18,7 +18,7 @@ plugins.backup-lazy
 # jj repo-specific data
 .config/jj/repos/
 
-# Claude Code - ignorar dados temporários e sensíveis
+# Claude Code temporary and sensitive data
 .claude/projects/
 .claude/debug/
 .claude/backups/
@@ -37,8 +37,18 @@ plugins.backup-lazy
 .config/homebrew/
 .config/uv/
 .config/go/telemetry/
+.config/zen/
 .config/qBittorrent/lockfile
 .config/qBittorrent/rss/
+.config/fcitx/dbus/
+.config/ibus/bus/
+.config/fcitx5/conf/cached_layouts
+.config/gtk-3.0/bookmarks
+.config/dconf/
+.config/qBittorrent/
+.config/omarchy/current/
+.config/omarchy.ttf
+.config/systemd/user/*.wants/
 .config/cliamp/*.log
 .config/cliamp/*.pid
 .config/golazo/*.json
