@@ -4,6 +4,19 @@
 .config/zsh/.git
 .config/zsh/.git/**
 
+# User content directories - not configuration
+Downloads/
+Documents/
+Videos/
+Pictures/
+Music/
+Desktop/
+Public/
+Templates/
+Projects/
+Work/
+Applications/
+
 # Backup files
 *.bak
 *.bak.*
