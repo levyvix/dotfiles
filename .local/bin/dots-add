@@ -1,0 +1,39 @@
+#!/bin/bash
+set -e
+
+if [[ $# -lt 1 ]]; then
+    echo "Usage: dots-add <path> [path...]"
+    exit 1
+fi
+
+show_section() {
+    printf "\n== %s ==\n" "$1"
+}
+
+paths=()
+for arg in "$@"; do
+    if [[ $arg == ~* ]]; then
+        arg="${arg/#\~/$HOME}"
+    fi
+
+    if [[ ! -e $arg ]]; then
+        echo "Path not found: $arg" >&2
+        exit 1
+    fi
+
+    rel="$(realpath --relative-to="$HOME" "$arg")"
+    if [[ $rel == ..* ]]; then
+        echo "Path must be inside $HOME: $arg" >&2
+        exit 1
+    fi
+
+    paths+=("$rel")
+done
+
+show_section "Adding Paths"
+printf "%s\n" "${paths[@]}"
+
+yadm add -- "${paths[@]}"
+
+show_section "Staged Files"
+yadm diff --cached --name-status -- "${paths[@]}"

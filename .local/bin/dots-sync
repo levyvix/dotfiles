@@ -1,13 +1,53 @@
 #!/bin/bash
 set -e
 
-echo "Checking for changes..."
-if ! yadm diff --quiet; then
-    yadm add -u
-    yadm commit -m "Update configs"
-    echo "Pushing to GitHub..."
-    yadm push
-    echo "✓ Sync complete"
-else
-    echo "No changes to sync"
+DRY_RUN=false
+if [[ ${1:-} == "--dry-run" ]]; then
+    DRY_RUN=true
 fi
+
+show_section() {
+    printf "\n== %s ==\n" "$1"
+}
+
+tracked_changes="$(yadm status --short --untracked-files=no)"
+
+echo "Checking for changes..."
+
+if [[ -z "$tracked_changes" ]]; then
+    echo "No changes to sync"
+    exit 0
+fi
+
+show_section "Tracked Changes"
+printf "%s\n" "$tracked_changes"
+
+yadm add -u
+
+show_section "Will Commit"
+yadm diff --cached --stat
+
+show_section "Staged Files"
+yadm diff --cached --name-status | sed -n '1,120p'
+
+staged_count="$(yadm diff --cached --name-only | wc -l)"
+printf "Staged count: %s\n" "$staged_count"
+
+if [[ "$DRY_RUN" == true ]]; then
+    show_section "Dry Run"
+    echo "No commit or push was performed."
+    exit 0
+fi
+
+yadm commit -m "Update configs"
+commit_id="$(yadm rev-parse --short HEAD)"
+
+show_section "Pushing"
+yadm push
+
+show_section "Pushed Commit"
+printf "%s\n" "$commit_id"
+yadm log --stat --oneline -n 1
+
+echo
+echo "Sync complete"
