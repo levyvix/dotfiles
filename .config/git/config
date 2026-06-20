@@ -5,6 +5,13 @@
 	br = branch
 	ci = commit
 	st = status
+	a = add
+	ps = push
+	pl = pull
+	l = log
+	c = commit -m
+	s = status
+	b = branch
 [init]
 	defaultBranch = master
 [pull]

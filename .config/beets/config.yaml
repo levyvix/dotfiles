@@ -1,0 +1,14 @@
+directory: /home/levi/Music
+library: /home/levi/.local/share/beets/library.db
+
+import:
+  copy: no
+  move: no
+  write: yes
+  autotag: yes
+  incremental: yes
+  resume: ask
+
+paths:
+  default: $albumartist/$album/$track - $title
+  singleton: Singles/$artist/$title
