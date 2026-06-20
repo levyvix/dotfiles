@@ -26,38 +26,3 @@ plugins.backup-lazy
 .claude/todos/
 .claude/.credentials.json
 .claude/statsig/
-
-# App/browser state, caches, databases, cookies, logs and ephemeral runtime data
-.config/Bitwarden/
-.config/chatgpt/
-.config/chromium/
-.config/obsidian/
-.config/pulse/
-.config/libaccounts-glib/
-.config/homebrew/
-.config/uv/
-.config/go/telemetry/
-.config/qBittorrent/lockfile
-.config/qBittorrent/rss/
-.config/cliamp/*.log
-.config/cliamp/*.pid
-.config/golazo/*.json
-.config/golazo/*.txt
-.config/configstore/
-.config/com.pake.aa2b7c1/
-
-# Secrets and machine-local auth
-.config/gh/hosts.yml
-
-# Common transient files under otherwise useful config trees
-*.log
-*.sqlite
-*.sqlite-shm
-*.sqlite-wal
-*.db
-*.db-journal
-*.pma
-*.lock
-*.pid
-*.sock
-*.tmp

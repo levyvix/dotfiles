@@ -2,8 +2,8 @@
 set -e
 
 echo "Checking for changes..."
-if [[ -n "$(yadm status --porcelain)" ]]; then
-    yadm add -A
+if ! yadm diff --quiet; then
+    yadm add -u
     yadm commit -m "Update configs"
     echo "Pushing to GitHub..."
     yadm push
