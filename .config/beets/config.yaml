@@ -9,6 +9,14 @@ import:
   incremental: yes
   resume: ask
 
+plugins: lyrics
+
+lyrics:
+  auto: no
+  force: no
+  fallback: ''
+  sources: genius tekstowo lrclib
+
 paths:
   default: $albumartist/$album/$track - $title
   singleton: Singles/$artist/$title
