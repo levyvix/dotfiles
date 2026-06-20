@@ -32,7 +32,7 @@
     "pulseaudio#output",
     "pulseaudio#input",
     "custom/split",
-    "power-profiles-daemon",
+    "custom/power-mode",
     "custom/split",
     "memory",
     "custom/split",
@@ -111,11 +111,11 @@
     "format-alt": "{:L%d %B W%V %Y}",
     "tooltip-format": "<span>{calendar}</span>",
     "calendar": {
-      "mode": "mouth",
+      "mode": "month",
       "mode-mon-col": 3,
       "on-click-right": "mode",
       "format": {
-        "mouth": "<span color='#ffead3'><b>{}</b></span>",
+        "month": "<span color='#ffead3'><b>{}</b></span>",
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
         "today": "<span color='#ff6699'><b>{}</b></span>"
       }
@@ -130,13 +130,7 @@
     "on-click": "notify-send -u low \"$(omarchy-weather-status)\""
   },
   "network": {
-    "format-icons": [
-      "󰤯",
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
-    ],
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
     "format-wifi": "{icon}",
     "format-ethernet": "󰈀 ",
@@ -184,11 +178,7 @@
     "tooltip-format-charging": "{timeTo}",
     "interval": 5,
     "on-click": "omarchy-menu power",
-    "on-click-right": "notify-send -u low \"$(omarchy-battery-status)\"",
-    "states": {
-      "warning": 20,
-      "critical": 10
-    }
+    "on-click-right": "notify-send -u low \"$(omarchy-battery-status)\""
   },
   "bluetooth": {
     "format": "",
@@ -227,16 +217,12 @@
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2% && pkill -SIGRTMIN+4 waybar",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2% && pkill -SIGRTMIN+4 waybar"
   },
-  "power-profiles-daemon": {
-    "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
-    "format-icons": {
-      "default": "󰓅",
-      "performance": "󰓅",
-      "balanced": "󰾅",
-      "power-saver": "󰾆"
-    }
+  "custom/power-mode": {
+    "exec": "~/.config/omarchy/power-mode-waybar.sh",
+    "return-type": "json",
+    "interval": 5,
+    "on-click": "~/.config/omarchy/toggle-power-mode.sh",
+    "signal": 11
   },
   "mpris": {
     "format": "󰋎 {title}-{artist}",
@@ -267,6 +253,18 @@
     "signal": 8,
     "return-type": "json"
   },
+  "custom/idle-indicator": {
+    "on-click": "omarchy-toggle-idle",
+    "exec": "$OMARCHY_PATH/default/waybar/indicators/idle.sh",
+    "signal": 9,
+    "return-type": "json"
+  },
+  "custom/notification-silencing-indicator": {
+    "on-click": "omarchy-toggle-notification-silencing",
+    "exec": "$OMARCHY_PATH/default/waybar/indicators/notification-silencing.sh",
+    "signal": 10,
+    "return-type": "json"
+  },
   "custom/voxtype": {
     "exec": "omarchy-voxtype-status",
     "return-type": "json",
@@ -279,18 +277,6 @@
     "tooltip": true,
     "on-click-right": "omarchy-voxtype-config",
     "on-click": "omarchy-voxtype-model"
-  },
-  "custom/idle-indicator": {
-    "on-click": "omarchy-toggle-idle",
-    "exec": "$OMARCHY_PATH/default/waybar/indicators/idle.sh",
-    "signal": 9,
-    "return-type": "json"
-  },
-  "custom/notification-silencing-indicator": {
-    "on-click": "omarchy-toggle-notification-silencing",
-    "exec": "$OMARCHY_PATH/default/waybar/indicators/notification-silencing.sh",
-    "signal": 10,
-    "return-type": "json"
   },
   "tray": {
     "icon-size": 14,

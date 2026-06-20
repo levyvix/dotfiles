@@ -5,13 +5,6 @@
 	br = branch
 	ci = commit
 	st = status
-	a = add
-	ps = push
-	pl = pull
-	l = log
-	c = commit -m
-	s = status
-	b = branch
 [init]
 	defaultBranch = master
 [pull]
@@ -34,5 +27,5 @@
 	enabled = true           # Record and reuse conflict resolutions
 	autoupdate = true        # Apply stored conflict resolutions automatically
 [user]
-	email = "9471166+levyvix@users.noreply.github.com "
-	name = Levy Nunes
+	name = lemani
+	email = lemani@duck.com

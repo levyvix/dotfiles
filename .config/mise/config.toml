@@ -1,4 +1,4 @@
 [tools]
 go = "latest"
-node = "25.1.0"
+node = "26.1.0"
 python = "latest"

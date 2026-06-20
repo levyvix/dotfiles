@@ -9,11 +9,21 @@ source ~/.local/share/omarchy/default/bash/rc
 #
 # Make an alias for invoking commands you use constantly
 # alias p='python'
+
+. "$HOME/.local/share/../bin/env"
+
+# Interactive Bash editing: autosuggestions and syntax highlighting.
+if [[ -f "$HOME/.local/share/blesh/ble.sh" ]]; then
+  source "$HOME/.local/share/blesh/ble.sh"
+fi
+
+# t-stream
 export PATH="$HOME/.local/bin:$PATH"
-PATH=/home/levi/ani-tupi/venv/bin:/home/levi/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.local/share/../bin:/home/levi/.local/bin:/home/levi/.bruin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.lmstudio/bin:/home/levi/.lmstudio/bin:/home/levi/.local/share/mise/installs/go/1.25.4/bin:/home/levi/.local/share/mise/installs/node/25.1.0/bin:/home/levi/.local/share/mise/installs/python/3.14.0/bin:/home/levi/.local/share/omarchy/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/levi/ani-tupi/dist
-PATH=/home/levi/ani-tupi/venv/bin:/home/levi/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.local/share/../bin:/home/levi/.local/bin:/home/levi/.bruin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.lmstudio/bin:/home/levi/.lmstudio/bin:/home/levi/.local/share/mise/installs/go/1.25.4/bin:/home/levi/.local/share/mise/installs/node/25.1.0/bin:/home/levi/.local/share/mise/installs/python/3.14.0/bin:/home/levi/.local/share/omarchy/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/levi/ani-tupi/ani-tupi/dist
-PATH=/home/levi/ani-tupi/venv/bin:/home/levi/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.local/share/../bin:/home/levi/.local/bin:/home/levi/.bruin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.lmstudio/bin:/home/levi/.lmstudio/bin:/home/levi/.local/share/mise/installs/go/1.25.4/bin:/home/levi/.local/share/mise/installs/node/25.1.0/bin:/home/levi/.local/share/mise/installs/python/3.14.0/bin:/home/levi/.local/share/omarchy/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/levi/ani-tupi/ani-tupi/ani-tupi/dist
-PATH=/home/levi/ani-tupi/venv/bin:/home/levi/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.local/share/../bin:/home/levi/.local/bin:/home/levi/.bruin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.lmstudio/bin:/home/levi/.lmstudio/bin:/home/levi/.local/share/mise/installs/go/1.25.4/bin:/home/levi/.local/share/mise/installs/node/25.1.0/bin:/home/levi/.local/share/mise/installs/python/3.14.0/bin:/home/levi/.local/share/omarchy/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/levi/ani-tupi/ani-tupi/ani-tupi/ani-tupi/dist
-PATH=/home/levi/ani-tupi/venv/bin:/home/levi/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.local/share/../bin:/home/levi/.local/bin:/home/levi/.bruin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.lmstudio/bin:/home/levi/.lmstudio/bin:/home/levi/.local/share/mise/installs/go/1.25.4/bin:/home/levi/.local/share/mise/installs/node/25.1.0/bin:/home/levi/.local/share/mise/installs/python/3.14.0/bin:/home/levi/.local/share/omarchy/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/levi/ani-tupi/ani-tupi/ani-tupi/ani-tupi/dist
-PATH=/home/levi/ani-tupi/venv/bin:/home/levi/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.local/share/../bin:/home/levi/.local/bin:/home/levi/.bruin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:./bin:/home/levi/.local/bin:/home/levi/.lmstudio/bin:/home/levi/.lmstudio/bin:/home/levi/.local/share/mise/installs/go/1.25.4/bin:/home/levi/.local/share/mise/installs/node/25.1.0/bin:/home/levi/.local/share/mise/installs/python/3.14.0/bin:/home/levi/.local/share/omarchy/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/levi/ani-tupi/ani-tupi/ani-tupi/ani-tupi/dist
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/home/levi/.cache/.bun/bin:$PATH"
+
+ppm() {
+  sudo /usr/local/bin/manual-power-mode "$@"
+}
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"

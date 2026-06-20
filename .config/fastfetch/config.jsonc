@@ -101,22 +101,9 @@
       "keyColor": "blue"
     },
     {
-      "type": "command",
+      "type": "packages",
       "key": "│ ├󰏖",
-      "keyColor": "blue",
-      "text": "pacman -Qi 2>/dev/null | grep 'Explicitly installed' | wc -l | awk '{print $1 \" (pacman apps)\"}'"
-    },
-    {
-      "type": "command",
-      "key": "│ ├",
-      "keyColor": "blue",
-      "text": "pacman -Qi 2>/dev/null | grep 'dependency' | wc -l | awk '{print $1 \" (pacman deps)\"}'"
-    },
-    {
-      "type": "command",
-      "key": "│ ├",
-      "keyColor": "blue",
-      "text": "flatpak list --app --columns=application | wc -l | awk '{print $1 \" (flatpak)\"}'"
+      "keyColor": "blue"
     },
     {
       "type": "wmtheme",
@@ -147,7 +134,7 @@
       "type": "command",
       "key": "󱦟 OS Age",
       "keyColor": "magenta",
-      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+      "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days"
     },
     {
       "type": "uptime",

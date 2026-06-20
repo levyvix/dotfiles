@@ -1,9 +1,6 @@
 @import "../omarchy/current/theme/waybar.css";
 
 * {
-  /* background-color: @background; */
-  /* color: @foreground; */
-
   border: none;
   padding: 0px;
   min-height: 0;
@@ -39,7 +36,7 @@ window#waybar  {
   margin: 3px 1px 3px 1px;
   border-radius: 2px;
   background-color: alpha(@foreground, 0.8);
-  color: @background; 
+  color: @background;
   transition: all 0.3s ease-in-out;
   opacity: 0.65;
 }
@@ -54,11 +51,12 @@ window#waybar  {
   transition: all 0.3s ease-in-out;
   opacity: 1;
 }
+
 #workspaces button:hover.empty,
 #workspaces button:hover {
-    background-color: @foreground;
-    color: @background;
-    opacity: 1;
+  background-color: @foreground;
+  color: @background;
+  opacity: 1;
 }
 
 #workspaces button.empty.active {
@@ -78,15 +76,12 @@ window#waybar  {
   opacity: 0.3;
 }
 
-
-
 #idle_inhibitor,
 #custom-updatespacman,
 #custom-omarchy,
 #custom-update,
-
 #clock,
-#mpris
+#mpris,
 #tray,
 #custom-split,
 #cpu,
@@ -95,7 +90,7 @@ window#waybar  {
 #backlight,
 #network,
 #power-profiles-daemon,
-#mpris,
+#custom-power-mode,
 #bluetooth,
 #pulseaudio {
   font-size: 12px;
@@ -109,26 +104,30 @@ tooltip {
 }
 
 #power-profiles-daemon,
+#custom-power-mode,
 #power-profiles-daemon.performance,
 #power-profiles-daemon.balanced,
-#power-profiles-daemon.power-saver {
-font-size: 16px;
-margin-top: 3px;
-margin-right: 4px;
+#power-profiles-daemon.power-saver,
+#custom-power-mode.performance,
+#custom-power-mode.balanced,
+#custom-power-mode.power-saver {
+  font-size: 16px;
+  margin-top: 3px;
+  margin-right: 4px;
 }
 
 #tray {
-    background-color: @transparent;
-    margin-top: 4px;
+  background-color: @transparent;
+  margin-top: 4px;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: @transparent;
+  -gtk-icon-effect: highlight;
+  background-color: @transparent;
 }
 
 .hidden {
@@ -142,9 +141,10 @@ tooltip {
  border: 1px solid alpha(@foreground, 0.8);
  border-radius: 8px;
 }
+
 tooltip label {
-    color: @foreground;
-    font-weight: normal;
+  color: @foreground;
+  font-weight: normal;
 }
 
 /* Specific animation Module */
@@ -166,28 +166,32 @@ tooltip label {
 }
 
 @keyframes blink-recording {
-    to {
-        color: @background;
-    }
+  to {
+    color: @background;
+  }
 }
 
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: #a55555;
+}
 
 #mpris {
-color: @foreground;
-animation: repeat;
-	animation-name: blink;
-	animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: @foreground;
+  animation: repeat;
+  animation-name: blink;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 @keyframes blink {
-    to {
-        color: #4a4a4a;
-        
-    }
+  to {
+    color: #4a4a4a;
+  }
 }
+
 #battery.warning {
   color: #c95d0f;
 }
@@ -208,6 +212,7 @@ animation: repeat;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
+
 #custom-voxtype {
   padding: 0 10px;
   min-width: 12px;
@@ -241,11 +246,6 @@ animation: repeat;
   100% {
     opacity: 1;
   }
-}
-
-#custom-idle-indicator.active,
-#custom-notification-silencing-indicator.active {
-  color: #a55555;
 }
 
 #custom-weather {
