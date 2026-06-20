@@ -10,10 +10,16 @@ show_section() {
     printf "\n== %s ==\n" "$1"
 }
 
+repo_root="$(yadm rev-parse --show-toplevel)"
+
 paths=()
 for arg in "$@"; do
     if [[ $arg == ~* ]]; then
         arg="${arg/#\~/$HOME}"
+    fi
+
+    if [[ $arg != /* ]]; then
+        arg="$(realpath -m "$PWD/$arg")"
     fi
 
     if [[ ! -e $arg ]]; then
@@ -33,7 +39,13 @@ done
 show_section "Adding Paths"
 printf "%s\n" "${paths[@]}"
 
-yadm add -- "${paths[@]}"
+(
+    cd "$repo_root"
+    yadm add -- "${paths[@]}"
+)
 
 show_section "Staged Files"
-yadm diff --cached --name-status -- "${paths[@]}"
+(
+    cd "$repo_root"
+    yadm diff --cached --name-status -- "${paths[@]}"
+)
