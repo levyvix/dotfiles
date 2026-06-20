@@ -4,6 +4,7 @@
 - NEVER use `cat <<` for printing reports/summaries. Output text directly in your response instead.
 - PREFER to use native bash tools (grep, fd, etc) commands to explore and discover.
 - Research the codebase before editing. Never change code you haven't read.
+- When a dotfile modification helps fix the user's problem, sync that change to the dotfiles repository using `yadm`. Stage only the relevant dotfiles, and push too when the task context implies syncing.
 
 ### Code Intelligence
 
