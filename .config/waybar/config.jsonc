@@ -147,6 +147,10 @@
     "format-discharging": " {capacity}% {icon}",
     "format-charging": " {capacity}% {icon}",
     "format-plugged": "  {capacity}%",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
     "format-icons": {
       "charging": [
         "󰢜",

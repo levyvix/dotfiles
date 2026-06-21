@@ -89,7 +89,6 @@ window#waybar  {
 #battery,
 #backlight,
 #network,
-#power-profiles-daemon,
 #custom-power-mode,
 #bluetooth,
 #pulseaudio {
@@ -103,11 +102,7 @@ tooltip {
   padding: 2px;
 }
 
-#power-profiles-daemon,
 #custom-power-mode,
-#power-profiles-daemon.performance,
-#power-profiles-daemon.balanced,
-#power-profiles-daemon.power-saver,
 #custom-power-mode.performance,
 #custom-power-mode.balanced,
 #custom-power-mode.power-saver {
