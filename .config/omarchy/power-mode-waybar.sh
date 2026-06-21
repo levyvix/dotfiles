@@ -9,13 +9,13 @@ case "$state" in
     icon="󰾆"
     ;;
   balanced)
-    icon="󰗑"
+    icon="󰾅"
     ;;
   performance)
-    icon="󱐋"
+    icon="󰓅"
     ;;
   *)
-    icon="󰗑"
+    icon="󰾅"
     state="balanced"
     ;;
 esac
