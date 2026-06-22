@@ -23,6 +23,10 @@ decorations = "None"
 
 [keyboard]
 bindings = [
+{ key = "Left", mods = "Control", chars = "\u001B[1;5D" },
+{ key = "Right", mods = "Control", chars = "\u001B[1;5C" },
+{ key = "Up", mods = "Control", chars = "\u001B[1;5A" },
+{ key = "Down", mods = "Control", chars = "\u001B[1;5B" },
 { key = "Insert", mods = "Shift", action = "Paste" },
 { key = "Insert", mods = "Control", action = "Copy" },
 { key = "Return", mods = "Shift", chars = "\u001B\r" }
