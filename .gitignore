@@ -33,9 +33,11 @@ Applications/
 !.claude/rules/
 !.claude/rules/**
 !.claude/settings.json
+!.claude/skills
 .codex/*
-!.codex/skills/
-!.codex/skills/**
+!.codex/skills
+!.cursor/skills
+.agents/skills/.system
 
 # Backup files
 *.bak

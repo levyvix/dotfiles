@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rich Repo Issue"
+  short_description: "Crie issues ricas via gh ou glab"
+  default_prompt: "Use $rich-repo-issue para transformar esta ideia em uma issue completa no repositório atual."
