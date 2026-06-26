@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-state="$(manual-power-mode get 2>/dev/null || cat /var/lib/manual-power-mode/state 2>/dev/null || echo balanced)"
+state="$(powerprofilesctl get 2>/dev/null || echo balanced)"
 
 case "$state" in
   power-saver)

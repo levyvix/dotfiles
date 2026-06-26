@@ -2,22 +2,30 @@
 
 set -euo pipefail
 
-current="$(manual-power-mode get 2>/dev/null || echo balanced)"
+current="$(powerprofilesctl get 2>/dev/null || echo balanced)"
 
-case "$current" in
+if [[ "$current" == "power-saver" ]]; then
+  next="balanced"
+else
+  next="power-saver"
+fi
+
+powerprofilesctl set "$next"
+
+case "$next" in
   power-saver)
-    next="balanced"
+    icon="󰾆"
+    label="Power saver"
     ;;
   balanced)
-    next="performance"
-    ;;
-  performance)
-    next="power-saver"
+    icon="󰾅"
+    label="Balanced"
     ;;
   *)
-    next="balanced"
+    icon="󰾅"
+    label="$next"
     ;;
 esac
 
-sudo manual-power-mode "$next"
+notify-send -u low "$icon    Power mode set to $label"
 pkill -SIGRTMIN+11 waybar || true
