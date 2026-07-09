@@ -1,4 +1,3 @@
-
 [Default Applications]
 text/plain=nvim.desktop
 text/english=nvim.desktop
@@ -24,7 +23,7 @@ image/gif=imv.desktop
 image/webp=imv.desktop
 image/bmp=imv.desktop
 image/tiff=imv.desktop
-application/pdf=org.gnome.Evince.desktop
+application/pdf=sioyek.desktop
 text/html=zen.desktop
 x-scheme-handler/http=zen.desktop
 x-scheme-handler/https=zen.desktop
@@ -46,3 +45,8 @@ video/x-ogm+ogg=mpv.desktop
 video/x-theora+ogg=mpv.desktop
 application/ogg=mpv.desktop
 x-scheme-handler/mailto=HEY.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+x-scheme-handler/stremio=stremio-enhanced.desktop
+
+[Added Associations]
+application/pdf=sioyek.desktop;

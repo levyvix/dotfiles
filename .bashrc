@@ -31,3 +31,6 @@ ppm() {
 }
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+
+# Added by codebase-memory-mcp install
+export PATH="/home/levi/.local/bin:$PATH"

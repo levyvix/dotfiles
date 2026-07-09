@@ -1,13 +1,15 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "attribution": {},
   "permissions": {
     "allow": [
       "Bash(ls:*)",
       "Bash(uv:*)"
     ],
-    "defaultMode": "dontAsk"
+    "defaultMode": "auto"
   },
-  "model": "haiku",
   "hooks": {
     "PreToolUse": [
       {
@@ -24,6 +26,64 @@
             "statusMessage": "Verificando sudo passwordless..."
           }
         ]
+      },
+      {
+        "matcher": "Grep|Glob",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-code-discovery-gate",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/home/levi/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
+      },
+      {
+        "matcher": "resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
+      },
+      {
+        "matcher": "clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
+      },
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
       }
     ]
   },
@@ -33,12 +93,13 @@
     "padding": 0
   },
   "enabledPlugins": {
+    "caveman@caveman": true,
     "code-simplifier@claude-plugins-official": true,
     "commit-commands@claude-code-plugins": true,
     "gopls-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": false,
     "pyright-lsp@claude-plugins-official": true,
-    "caveman@caveman": true
+    "brag@brag": true
   },
   "extraKnownMarketplaces": {
     "caveman": {
@@ -46,10 +107,18 @@
         "source": "github",
         "repo": "JuliusBrussee/caveman"
       }
+    },
+    "brag": {
+      "source": {
+        "source": "github",
+        "repo": "latent-spaces/brag"
+      }
     }
   },
   "language": "pt-br",
-  "effortLevel": "medium",
+  "effortLevel": "low",
   "showThinkingSummaries": true,
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
+  "preferredNotifChannel": "auto"
 }

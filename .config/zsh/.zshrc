@@ -84,7 +84,7 @@ gb() {
 
 
 # Monitor de Legendas
-alias ani='ani-tupi --skip anilist'
+alias ani='ani-tupi anilist'
 alias manga='manga-tupi anilist'
 
 export PATH="$HOME/bin:$PATH"
