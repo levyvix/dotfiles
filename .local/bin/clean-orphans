@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# Reap orphaned background editors + their language servers.
+# xdg-open / scripts spawn nvim without a controlling terminal; when the
+# opener dies the editor lingers for days holding RAM (and its LSP servers).
+# An interactive nvim you're using in a terminal HAS a tty (pts/N) and is
+# left alone. Headless/orphaned ones show tty "?" and get reaped.
+set -euo pipefail
+
+dry=0
+[[ "${1:-}" == "-n" || "${1:-}" == "--dry-run" ]] && dry=1
+
+editors=(nvim vim)
+servers=(gopls pyright-langserver pylsp rust-analyzer typescript-language-server lua-language-server clangd)
+
+pids=()
+
+# Editors with no controlling terminal (tty == ?) => not interactive => orphan.
+for e in "${editors[@]}"; do
+  while read -r pid tty; do
+    [[ "$tty" == "?" ]] && pids+=("$pid")
+  done < <(ps -o pid=,tty= -C "$e" 2>/dev/null || true)
+done
+
+# Language servers: reap if their parent editor is being killed OR they are
+# already orphaned (reparented to init/systemd, ppid 1).
+for s in "${servers[@]}"; do
+  while read -r pid ppid; do
+    if [[ " ${pids[*]} " == *" $ppid "* ]] || [[ "$ppid" == 1 ]]; then
+      pids+=("$pid")
+    fi
+  done < <(ps -o pid=,ppid= -C "$s" 2>/dev/null || true)
+done
+
+mapfile -t pids < <(printf '%s\n' "${pids[@]}" | sort -un | grep -vx "$$" || true)
+
+if [[ ${#pids[@]} -eq 0 ]]; then
+  echo "clean-orphans: nothing to kill."
+  exit 0
+fi
+
+echo "clean-orphans: found ${#pids[@]} orphan processes:"
+for p in "${pids[@]}"; do
+  [[ -r /proc/$p/comm ]] && printf '  %-8s %-24s tty=%s\n' \
+    "$p" "$(cat /proc/"$p"/comm)" "$(ps -o tty= -p "$p" 2>/dev/null | tr -d ' ')"
+done
+
+if [[ $dry -eq 1 ]]; then
+  echo "clean-orphans: dry-run, nothing killed."
+  exit 0
+fi
+
+kill "${pids[@]}" 2>/dev/null || true
+sleep 2
+for p in "${pids[@]}"; do kill -0 "$p" 2>/dev/null && kill -9 "$p" 2>/dev/null || true; done
+
+echo "clean-orphans: done. load: $(cut -d' ' -f1-3 /proc/loadavg)"

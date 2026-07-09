@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Kill leaked chromedriver + headless webdriver chromium instances.
+# Selenium/Playwright scripts that crash without driver.quit() leave these
+# running for days, eating CPU/RAM. This reaps them.
+set -euo pipefail
+
+dry=0
+[[ "${1:-}" == "-n" || "${1:-}" == "--dry-run" ]] && dry=1
+
+# Match patterns unique to automation-driven chromium (not your real browser).
+patterns=(
+  "test-type=webdriver"
+  "enable-automation"
+  "scoped_dir"
+)
+
+mapfile -t drivers < <(pgrep -x chromedriver || true)
+
+pids=()
+for p in "${drivers[@]}"; do pids+=("$p"); done
+for pat in "${patterns[@]}"; do
+  while IFS= read -r p; do pids+=("$p"); done < <(pgrep -f "$pat" || true)
+done
+
+# Dedupe, drop own PID.
+mapfile -t pids < <(printf '%s\n' "${pids[@]}" | sort -u | grep -vx "$$" || true)
+
+if [[ ${#pids[@]} -eq 0 ]]; then
+  echo "clean-webdriver: nothing to kill."
+  exit 0
+fi
+
+echo "clean-webdriver: found ${#pids[@]} processes:"
+for p in "${pids[@]}"; do
+  [[ -r /proc/$p/comm ]] && printf '  %s  %s\n' "$p" "$(cat /proc/"$p"/comm)"
+done
+
+if [[ $dry -eq 1 ]]; then
+  echo "clean-webdriver: dry-run, nothing killed."
+  exit 0
+fi
+
+kill "${pids[@]}" 2>/dev/null || true
+sleep 2
+# Force-kill survivors.
+for p in "${pids[@]}"; do kill -0 "$p" 2>/dev/null && kill -9 "$p" 2>/dev/null || true; done
+
+echo "clean-webdriver: done. load: $(cut -d' ' -f1-3 /proc/loadavg)"
