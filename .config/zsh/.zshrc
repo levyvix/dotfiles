@@ -84,15 +84,11 @@ gb() {
 
 
 # Monitor de Legendas
-alias ani='ani-tupi anilist'
-alias manga='manga-tupi anilist'
 
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/share/coursier/bin:$PATH"
 
-# Greenlight go api
-export GREENLIGHT_DB_DSN='postgres://greenlight:pa55word@localhost/greenlight?sslmode=disable'
 
 # bun completions
 [ -s "/home/levi/.bun/_bun" ] && source "/home/levi/.bun/_bun"
