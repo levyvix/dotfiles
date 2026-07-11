@@ -1,0 +1,45 @@
+#!/bin/bash
+# Capture installed packages into yadm-tracked lists.
+#   pacman.txt  <- native explicit packages (pacman -Qqen)
+#   aur.txt     <- foreign/AUR explicit packages (pacman -Qqem)
+#   Brewfile    <- Homebrew formulae/casks (brew bundle dump)
+# Restore with `yadm bootstrap`.
+set -e
+
+PKG_DIR="$HOME/.config/packages"
+mkdir -p "$PKG_DIR"
+
+DO_ADD=true
+if [[ ${1:-} == "--no-add" ]]; then
+    DO_ADD=false
+fi
+
+show_section() {
+    printf "\n== %s ==\n" "$1"
+}
+
+show_section "pacman (native)"
+pacman -Qqen | tee "$PKG_DIR/pacman.txt" | wc -l | xargs printf "%s packages\n"
+
+show_section "AUR (foreign)"
+pacman -Qqem | tee "$PKG_DIR/aur.txt" | wc -l | xargs printf "%s packages\n"
+
+if command -v brew &>/dev/null; then
+    show_section "Homebrew"
+    brew bundle dump --file="$PKG_DIR/Brewfile" --force
+    wc -l < "$PKG_DIR/Brewfile" | xargs printf "%s Brewfile entries\n"
+else
+    echo "brew not found, skipping Brewfile"
+fi
+
+if [[ "$DO_ADD" == true ]]; then
+    show_section "Staging in yadm"
+    yadm add -- "$PKG_DIR/pacman.txt" "$PKG_DIR/aur.txt"
+    [[ -f "$PKG_DIR/Brewfile" ]] && yadm add -- "$PKG_DIR/Brewfile"
+    yadm diff --cached --stat -- "$PKG_DIR"
+    echo
+    echo "Staged. Run dots-sync to commit + push."
+else
+    echo
+    echo "Lists updated (not staged)."
+fi

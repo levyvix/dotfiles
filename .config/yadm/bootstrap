@@ -13,4 +13,11 @@ else
     echo "AVISO: nenhum helper AUR encontrado (paru/yay). Instale manualmente os pacotes em ~/.config/packages/aur.txt"
 fi
 
+echo "==> Instalando pacotes do Homebrew..."
+if command -v brew &>/dev/null; then
+    brew bundle install --file ~/.config/packages/Brewfile
+else
+    echo "AVISO: brew não encontrado. Instale via https://brew.sh e rode 'brew bundle install --file ~/.config/packages/Brewfile'"
+fi
+
 echo "==> Pronto!"
