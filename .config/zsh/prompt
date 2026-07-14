@@ -5,6 +5,7 @@ color_prompt=yes
 # Simple prompt with path in the window/pane title and caret for typing line
 autoload -Uz add-zsh-hook
 
+if [[ ! -f ~/.config/starship.toml ]]; then
 starship preset bracketed-segments -o ~/.config/starship.toml
 
 # Disable gcloud and scala modules
@@ -24,3 +25,4 @@ content += "\n[gcloud]\ndisabled = true\n\n[scala]\ndisabled = true\n"
 with open("/home/levi/.config/starship.toml", "w") as f:
     f.write(content)
 PYTHON
+fi
