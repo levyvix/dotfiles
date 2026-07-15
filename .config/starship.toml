@@ -278,37 +278,6 @@ format = '\[[$symbol($version)]($style)\]'
 [zig]
 format = '\[[$symbol($version)]($style)\]'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [gcloud]
 disabled = true
 
