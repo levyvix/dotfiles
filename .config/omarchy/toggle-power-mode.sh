@@ -10,6 +10,14 @@ else
   next="power-saver"
 fi
 
+# ThinkPad DYTC (lapmode) faz o EC reverter platform_profile=low-power para
+# balanced em ~50ms, e o power-profiles-daemon segue o firmware. Recarregar o
+# thinkpad_acpi reseta o estado DYTC para que o low-power seja aceito e segure.
+if [[ "$next" == "power-saver" ]]; then
+  sudo -n /usr/local/bin/reload-thinkpad-acpi || true
+  sleep 1
+fi
+
 powerprofilesctl set "$next"
 
 case "$next" in
