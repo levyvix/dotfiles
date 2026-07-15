@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Recarrega o módulo thinkpad_acpi para resetar o estado DYTC/EC, permitindo
+# que o platform_profile "low-power" (power-saver) seja aceito e segure.
+# Necessário porque o DYTC lapmode do ThinkPad reverte low-power -> balanced.
+set -euo pipefail
+
+modprobe -r thinkpad_acpi
+modprobe thinkpad_acpi

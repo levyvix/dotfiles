@@ -20,4 +20,15 @@ else
     echo "AVISO: brew não encontrado. Instale via https://brew.sh e rode 'brew bundle install --file ~/.config/packages/Brewfile'"
 fi
 
+echo "==> Instalando helper de power-saver do ThinkPad (DYTC lapmode)..."
+# O EC do ThinkPad (DYTC lapmode) reverte platform_profile=low-power para
+# balanced, então powerprofilesctl set power-saver não segura. Recarregar o
+# thinkpad_acpi reseta esse estado. O atalho WIN+SHIFT+S chama o helper via
+# sudo sem senha antes de aplicar o power-saver.
+if [ -f ~/.config/omarchy/reload-thinkpad-acpi ]; then
+    sudo install -m755 -o root -g root ~/.config/omarchy/reload-thinkpad-acpi /usr/local/bin/reload-thinkpad-acpi
+    sudo install -m440 -o root -g root ~/.config/omarchy/reload-thinkpad-acpi.sudoers /etc/sudoers.d/reload-thinkpad-acpi
+    sudo visudo -c -f /etc/sudoers.d/reload-thinkpad-acpi
+fi
+
 echo "==> Pronto!"
