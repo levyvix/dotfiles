@@ -17,7 +17,8 @@
     "custom/split",
     "tray",
     "custom/split",
-    "mpris"
+    "mpris",
+    "backlight"
   ],
   "modules-center": [
     "hyprland/workspaces"
