@@ -121,7 +121,6 @@ plocate
 plymouth
 polkit-gnome
 postgresql-libs
-power-profiles-daemon
 python-beautifulsoup4
 python-gobject
 python-langdetect
@@ -151,6 +150,8 @@ tesseract
 tesseract-data-eng
 thermald
 tldr
+tlp
+tlp-pd
 tmux
 tree-sitter-cli
 ttf-ia-writer

@@ -31,4 +31,17 @@ if [ -f ~/.config/omarchy/reload-thinkpad-acpi ]; then
     sudo visudo -c -f /etc/sudoers.d/reload-thinkpad-acpi
 fi
 
+echo "==> Configurando TLP (substitui power-profiles-daemon)..."
+# tlp/tlp-pd vêm do pacman.txt. tlp-pd reimplementa a API D-Bus PowerProfiles
+# que a Waybar do Omarchy consome. Habilita os serviços e recria o symlink que o
+# wrapper ~/.local/bin/powerprofilesctl espera em /usr/bin (o binário original
+# some junto com power-profiles-daemon).
+if command -v tlp &>/dev/null; then
+    sudo systemctl disable --now power-profiles-daemon.service 2>/dev/null || true
+    sudo systemctl enable tlp.service
+    sudo systemctl enable --now tlp-pd.service
+    sudo ln -sf /usr/bin/tlpctl /usr/bin/powerprofilesctl
+    sudo tlp start
+fi
+
 echo "==> Pronto!"
