@@ -76,6 +76,5 @@
   "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
-  "preferredNotifChannel": "auto",
-  "model": "claude-fable-5[1m]"
+  "preferredNotifChannel": "auto"
 }

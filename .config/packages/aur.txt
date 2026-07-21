@@ -3,5 +3,4 @@ fzf-tab
 openspec
 rtk
 sesh-bin
-stremio-enhanced-bin
 tork

@@ -26,7 +26,6 @@ cups
 cups-browsed
 cups-filters
 cups-pdf
-cursor-bin
 docker
 docker-buildx
 docker-compose
@@ -44,6 +43,7 @@ fcitx5-gtk
 fcitx5-qt
 fd
 ffmpegthumbnailer
+flatpak
 fontconfig
 fzf
 git
@@ -183,6 +183,7 @@ yadm
 yaru-icon-theme
 yay
 yazi
+zathura
 zen-browser-bin
 zoxide
 zram-generator

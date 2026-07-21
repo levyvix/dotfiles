@@ -1,5 +1,6 @@
 alias monhd="sudo ddcutil -d 1 setvcp 60 0x12"
 alias mondp="sudo ddcutil -d 1 setvcp 60 0x0F"
+alias stremio="flatpak run com.stremio.Stremio"
 
 alias sgpt='docker run --rm -e OPENAI_API_BASE=${OPENAI_API_BASE} -e OPENAI_API_KEY=${OPENROUTER_API_KEY} ghcr.io/tbckr/sgpt:latest txt '
 
