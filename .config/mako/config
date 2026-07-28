@@ -1,1 +1,3 @@
-/home/levi/.config/omarchy/current/theme/mako.ini
+layer=overlay
+
+include=~/.config/omarchy/current/theme/mako.ini
