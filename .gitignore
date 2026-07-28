@@ -93,6 +93,8 @@ plugins.backup-lazy
 
 # Secrets and machine-local auth
 .config/gh/hosts.yml
+# Tokens de API e cookies de sessão (LEETCODE_SESSION, LEETCODE_CSRF, ...)
+.config/zsh/envs
 
 # Common transient files under otherwise useful config trees
 *.log
