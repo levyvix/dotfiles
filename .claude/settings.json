@@ -36,12 +36,6 @@
           {
             "command": "/home/levi/.claude/hooks/rtk-rewrite.sh",
             "type": "command"
-          },
-          {
-            "command": "/home/levi/.claude/hooks/sudo-passwordless-toggle.sh",
-            "if": "Bash(sudo*)",
-            "statusMessage": "Verificando sudo passwordless...",
-            "type": "command"
           }
         ],
         "matcher": "Bash"
