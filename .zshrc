@@ -11,3 +11,7 @@ alias manga='manga-tupi anilist'
 if [[ -r "$HOME/.config/zsh/.zshrc" ]]; then
   source "$HOME/.config/zsh/.zshrc"
 fi
+
+# >>> Codex installer >>>
+export PATH="/home/levi/.local/bin:$PATH"
+# <<< Codex installer <<<

@@ -1,8 +1,66 @@
 {
+  "attribution": {},
+  "effortLevel": "medium",
+  "enabledPlugins": {
+    "brag@brag": false,
+    "caveman@caveman": false,
+    "code-simplifier@claude-plugins-official": true,
+    "commit-commands@claude-code-plugins": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": false,
+    "pydantic-ai@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": false
+  },
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "attribution": {},
+  "extraKnownMarketplaces": {
+    "brag": {
+      "source": {
+        "repo": "latent-spaces/brag",
+        "source": "github"
+      }
+    },
+    "caveman": {
+      "source": {
+        "repo": "JuliusBrussee/caveman",
+        "source": "github"
+      }
+    }
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "/home/levi/.claude/hooks/rtk-rewrite.sh",
+            "type": "command"
+          },
+          {
+            "command": "/home/levi/.claude/hooks/sudo-passwordless-toggle.sh",
+            "if": "Bash(sudo*)",
+            "statusMessage": "Verificando sudo passwordless...",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bash '/home/levi/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ]
+  },
+  "language": "pt-br",
   "permissions": {
     "allow": [
       "Bash(ls:*)",
@@ -10,71 +68,13 @@
     ],
     "defaultMode": "auto"
   },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/home/levi/.claude/hooks/rtk-rewrite.sh"
-          },
-          {
-            "type": "command",
-            "command": "/home/levi/.claude/hooks/sudo-passwordless-toggle.sh",
-            "if": "Bash(sudo*)",
-            "statusMessage": "Verificando sudo passwordless..."
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash '/home/levi/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10
-          }
-        ]
-      }
-    ]
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "/home/levi/.claude/statusline.sh",
-    "padding": 0
-  },
-  "enabledPlugins": {
-    "caveman@caveman": false,
-    "code-simplifier@claude-plugins-official": true,
-    "commit-commands@claude-code-plugins": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": false,
-    "pyright-lsp@claude-plugins-official": true,
-    "brag@brag": false,
-    "superpowers@claude-plugins-official": true,
-    "pydantic-ai@claude-plugins-official": true
-  },
-  "extraKnownMarketplaces": {
-    "caveman": {
-      "source": {
-        "source": "github",
-        "repo": "JuliusBrussee/caveman"
-      }
-    },
-    "brag": {
-      "source": {
-        "source": "github",
-        "repo": "latent-spaces/brag"
-      }
-    }
-  },
-  "language": "pt-br",
-  "effortLevel": "medium",
+  "preferredNotifChannel": "auto",
   "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
-  "theme": "dark",
-  "preferredNotifChannel": "auto"
+  "statusLine": {
+    "command": "/home/levi/.local/bin/best-claude-hud",
+    "padding": 0,
+    "type": "command"
+  },
+  "theme": "dark"
 }
