@@ -1,0 +1,14 @@
+[Unit]
+Description=Stremio streaming service
+Documentation=https://www.stremio.com/download-service
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/flatpak run --branch=stable --arch=x86_64 com.stremio.Service
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=graphical-session.target
