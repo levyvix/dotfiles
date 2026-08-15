@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "levi.notification-center",
+  "name": "Notification Center",
+  "version": "0.1.0",
+  "author": "Levi",
+  "license": "MIT",
+  "description": "Recent desktop notifications in a compact Quickshell panel.",
+  "kinds": ["bar-widget"],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Notification Center",
+    "description": "Open, use, and clear recent desktop notifications.",
+    "category": "Desktop",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}
