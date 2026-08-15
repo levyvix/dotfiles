@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "levi.youtube-music",
+  "name": "YouTube Music",
+  "version": "0.1.0",
+  "author": "Levy Vix",
+  "license": "MIT",
+  "description": "MPRIS controls for YouTube Music in the Omarchy bar.",
+  "kinds": ["bar-widget"],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "YouTube Music",
+    "description": "Show the current YouTube Music track and control playback.",
+    "category": "Media",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}

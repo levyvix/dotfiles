@@ -43,10 +43,7 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "omaconnect"
-        },
-        {
-          "id": "robzolkos.github"
+          "id": "levi.youtube-music"
         },
         {
           "id": "omarchy.agents"
@@ -76,10 +73,6 @@
     "lock": 300,
     "screensaver": 150
   },
-  "plugins": [
-    {
-      "id": "simple.dock"
-    }
-  ],
+  "plugins": [],
   "version": 1
 }
