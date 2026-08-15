@@ -10,20 +10,48 @@ Panel {
   moduleName: "levi.youtube-music"
   ipcTarget: "levi.youtube-music"
 
-  property var player: {
-    for (var i = 0; i < Mpris.players.values.length; i++) {
-      var candidate = Mpris.players.values[i]
-      var metadata = candidate.metadata || {}
-      var url = String(metadata["xesam:url"] || "").toLowerCase()
-      var identity = String(candidate.identity || "").toLowerCase()
-      var browser = identity === "chromium"
-        || identity.indexOf("mozilla zen") !== -1
-        || identity.indexOf("firefox") !== -1
-      if (identity.indexOf("youtube music") !== -1
-          || url.indexOf("music.youtube.com") !== -1
-          || (browser && candidate.isPlaying)) return candidate
+  readonly property var players: Mpris.players ? Mpris.players.values : []
+  property var player: null
+
+  function isBrowser(candidate) {
+    var identity = String(candidate && candidate.identity || "").toLowerCase()
+    return identity === "chromium"
+      || identity.indexOf("mozilla zen") !== -1
+      || identity.indexOf("firefox") !== -1
+  }
+
+  function isYoutubeMusic(candidate) {
+    if (!candidate) return false
+    var metadata = candidate.metadata || {}
+    var url = String(metadata["xesam:url"] || "").toLowerCase()
+    var identity = String(candidate.identity || "").toLowerCase()
+    return identity.indexOf("youtube music") !== -1
+      || url.indexOf("music.youtube.com") !== -1
+      || (isBrowser(candidate) && candidate.isPlaying)
+  }
+
+  function selectPlayer() {
+    for (var i = 0; i < players.length; i++) {
+      var candidate = players[i]
+      if (isYoutubeMusic(candidate) && candidate.isPlaying) {
+        player = candidate
+        return
+      }
     }
-    return null
+    if (player && players.indexOf(player) !== -1) return
+    player = null
+  }
+
+  Component.onCompleted: selectPlayer()
+  onPlayersChanged: selectPlayer()
+
+  Instantiator {
+    model: root.players
+    delegate: Connections {
+      required property var modelData
+      target: modelData
+      function onIsPlayingChanged() { root.selectPlayer() }
+    }
   }
 
   readonly property bool playing: player && player.playbackState === MprisPlaybackState.Playing
