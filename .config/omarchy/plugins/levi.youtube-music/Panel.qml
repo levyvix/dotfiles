@@ -16,7 +16,12 @@ Panel {
       var metadata = candidate.metadata || {}
       var url = String(metadata["xesam:url"] || "").toLowerCase()
       var identity = String(candidate.identity || "").toLowerCase()
-      if (identity.indexOf("youtube music") !== -1 || url.indexOf("music.youtube.com") !== -1) return candidate
+      var browser = identity === "chromium"
+        || identity.indexOf("mozilla zen") !== -1
+        || identity.indexOf("firefox") !== -1
+      if (identity.indexOf("youtube music") !== -1
+          || url.indexOf("music.youtube.com") !== -1
+          || (browser && candidate.isPlaying)) return candidate
     }
     return null
   }
