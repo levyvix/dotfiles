@@ -54,8 +54,8 @@ BarWidget {
     popupOpen = false
   }
 
-  visible: player !== null
-  implicitWidth: player ? row.implicitWidth + Style.space(12) : 0
+  visible: true
+  implicitWidth: row.implicitWidth + Style.space(12)
   implicitHeight: barSize
 
   Row {
