@@ -97,13 +97,26 @@ Panel {
       }
 
       Flickable {
+        id: notificationFlick
         anchors.fill: parent
         contentWidth: width
         contentHeight: content.implicitHeight
         clip: true
         flickableDirection: Flickable.VerticalFlick
         interactive: contentHeight > height
+        maximumFlickVelocity: 5000
         ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
+
+        WheelHandler {
+          onWheel: function(event) {
+            var delta = event.angleDelta.y !== 0
+              ? event.angleDelta.y / 120 * 80
+              : event.pixelDelta.y * 1.5
+            var maximum = Math.max(0, notificationFlick.contentHeight - notificationFlick.height)
+            notificationFlick.contentY = Math.max(0, Math.min(maximum, notificationFlick.contentY - delta))
+            event.accepted = true
+          }
+        }
 
         Column {
           id: content
