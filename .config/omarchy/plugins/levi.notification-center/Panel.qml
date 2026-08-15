@@ -49,7 +49,13 @@ Panel {
   }
 
   function dismiss(index) {
-    if (index >= 0 && index < historyModel.count) historyModel.remove(index)
+    if (index >= 0 && index < historyModel.count) {
+      historyModel.remove(index)
+    }
+  }
+
+  function clearHistory() {
+    historyModel.clear()
   }
 
   function openNotification(row) {
@@ -74,7 +80,7 @@ Panel {
     anchors.fill: parent
     bar: root.bar
     text: "󰂚"
-    active: historyModel.count > 0
+    active: false
     onPressed: root.toggle()
   }
 
@@ -95,7 +101,7 @@ Panel {
       onTextKey: function(text) {
         if (text === "r" || text === "R") root.loadHistory()
         if (text === "c" || text === "C") {
-          historyModel.clear()
+          root.clearHistory()
           root.close()
         }
       }
@@ -160,7 +166,7 @@ Panel {
             Button {
               text: "Clear all"
               enabled: historyModel.count > 0
-              onClicked: historyModel.clear()
+              onClicked: root.clearHistory()
             }
           }
 
@@ -193,7 +199,7 @@ Panel {
               MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
-                onClicked: root.openNotification({ exec: exec })
+                onClicked: root.openNotification({ app: app, exec: exec })
               }
 
               BorderSurface {
