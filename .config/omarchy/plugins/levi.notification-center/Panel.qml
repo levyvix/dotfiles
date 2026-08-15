@@ -54,7 +54,11 @@ Panel {
 
   function openNotification(row) {
     var command = row && String(row.exec || "")
-    if (command !== "") Util.execDetached(command)
+    if (command !== "") {
+      Util.execDetached(command)
+      return
+    }
+    if (notificationService && row) notificationService.focusApp(row)
   }
 
   implicitWidth: button.implicitWidth
