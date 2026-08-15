@@ -88,7 +88,8 @@ BarWidget {
     acceptedButtons: Qt.LeftButton | Qt.RightButton
     onClicked: function(mouse) {
       if (mouse.button === Qt.RightButton) popupOpen = !popupOpen
-      else playPause()
+      else if (player) playPause()
+      else openYoutubeMusic()
     }
   }
 
