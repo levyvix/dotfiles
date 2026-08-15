@@ -8,7 +8,7 @@
   "description": "MPRIS controls for YouTube Music in the Omarchy bar.",
   "kinds": ["bar-widget"],
   "entryPoints": {
-    "barWidget": "BarWidget.qml"
+    "barWidget": "Panel.qml"
   },
   "barWidget": {
     "displayName": "YouTube Music",
