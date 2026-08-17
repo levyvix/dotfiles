@@ -35,6 +35,9 @@ o.bind("SUPER + SHIFT + COMMA", "Move window to left column", hl.dsp.layout("mov
 o.bind("SUPER + SHIFT + UP", "Move window up", hl.dsp.layout("movewindowto u"))
 o.bind("SUPER + SHIFT + DOWN", "Move window down", hl.dsp.layout("movewindowto d"))
 
+hl.unbind("SUPER + comma")
+o.bind("SUPER + ccedilla", "Dismiss last notification", "omarchy-shell notifications dismissOne")
+
 hl.unbind("SUPER + SHIFT + C")
 o.bind("SUPER + SHIFT + C", "Google Calendar", { webapp = "https://calendar.google.com/" })
 
