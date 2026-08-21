@@ -14,6 +14,13 @@ dofile((os.getenv("OMARCHY_PATH") or "/usr/share/omarchy") .. "/default/hypr/boo
 -- omarchy_preinstalled_bindings = false
 require("default.hypr.omarchy")
 
+local guide = (os.getenv("HOME") or "") .. "/.config/omarchy/plugins/io.github.ctl0v0.keybinding-guide/hypr/keybinding-guide.lua"
+local file = io.open(guide, "r")
+if file then
+  file:close()
+  dofile(guide)
+end
+
 -- Put your personal overrides in these files. They're loaded after Omarchy's
 -- defaults so package updates can improve the defaults without rewriting your
 -- ~/.config/hypr files.
