@@ -34,15 +34,16 @@ o.bind("SUPER + SHIFT + PERIOD", "Move window to right column", hl.dsp.layout("m
 o.bind("SUPER + SHIFT + COMMA", "Move window to left column", hl.dsp.layout("movewindowto l"))
 o.bind("SUPER + SHIFT + UP", "Move window up", hl.dsp.layout("movewindowto u"))
 o.bind("SUPER + SHIFT + DOWN", "Move window down", hl.dsp.layout("movewindowto d"))
+hl.unbind("SUPER + semicolon")
 
 hl.unbind("SUPER + SHIFT + F")
-o.bind("SUPER + SHIFT + F", "File manager", "uwsm-app -- /usr/bin/nemo --new-window")
+o.bind("SUPER + SHIFT + F", "File manager", "uwsm-app -- /usr/bin/nemo")
 
 hl.unbind("SUPER + ALT + SHIFT + F")
 o.bind(
 	"SUPER + ALT + SHIFT + F",
 	"File manager (cwd)",
-	"uwsm-app -- /usr/bin/nemo --new-window \"$(omarchy-cmd-terminal-cwd)\""
+	"uwsm-app -- /usr/bin/nemo \"$(omarchy-cmd-terminal-cwd)\""
 )
 
 hl.unbind("SUPER + comma")
