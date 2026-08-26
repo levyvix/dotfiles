@@ -35,6 +35,16 @@ o.bind("SUPER + SHIFT + COMMA", "Move window to left column", hl.dsp.layout("mov
 o.bind("SUPER + SHIFT + UP", "Move window up", hl.dsp.layout("movewindowto u"))
 o.bind("SUPER + SHIFT + DOWN", "Move window down", hl.dsp.layout("movewindowto d"))
 
+hl.unbind("SUPER + SHIFT + F")
+o.bind("SUPER + SHIFT + F", "File manager", "uwsm-app -- /usr/bin/nemo --new-window")
+
+hl.unbind("SUPER + ALT + SHIFT + F")
+o.bind(
+	"SUPER + ALT + SHIFT + F",
+	"File manager (cwd)",
+	"uwsm-app -- /usr/bin/nemo --new-window \"$(omarchy-cmd-terminal-cwd)\""
+)
+
 hl.unbind("SUPER + comma")
 o.bind("SUPER + ccedilla", "Dismiss last notification", "omarchy-shell notifications dismissOne")
 
