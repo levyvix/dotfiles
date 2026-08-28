@@ -1,0 +1,17 @@
+[Unit]
+Description=Restore Fuxi-H3 headset audio
+Wants=pipewire-pulse.service wireplumber.service
+After=pipewire-pulse.service wireplumber.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh -c 'i=0; while ! /usr/bin/pactl list short sinks | /usr/bin/grep -q Fuxi-H3 && [ "$i" -lt 30 ]; do i=$((i + 1)); /usr/bin/sleep 1; done; /usr/bin/pactl list short sinks | /usr/bin/grep -q Fuxi-H3 || exit 1'
+ExecStart=/usr/bin/pactl set-default-sink alsa_output.usb-XiiSound_Technology_Corporation_Fuxi-H3-00.analog-stereo
+ExecStart=/usr/bin/pactl set-sink-volume alsa_output.usb-XiiSound_Technology_Corporation_Fuxi-H3-00.analog-stereo 80%
+ExecStart=/usr/bin/pactl set-sink-mute alsa_output.usb-XiiSound_Technology_Corporation_Fuxi-H3-00.analog-stereo 0
+ExecStart=/usr/bin/amixer -c FuxiH3 sset 'PCM',0 100% unmute
+ExecStart=/usr/bin/amixer -c FuxiH3 sset 'PCM',1 unmute
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
