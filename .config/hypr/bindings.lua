@@ -37,7 +37,7 @@ o.bind("SUPER + SHIFT + DOWN", "Move window down", hl.dsp.layout("movewindowto d
 hl.unbind("SUPER + semicolon")
 
 hl.unbind("SUPER + SHIFT + F")
-o.bind("SUPER + SHIFT + F", "File manager", "uwsm-app -- /usr/bin/nemo")
+o.bind("SUPER + SHIFT + F", "HyprFM", "uwsm-app -- /usr/bin/hyprfm")
 
 hl.unbind("SUPER + ALT + SHIFT + F")
 o.bind(
