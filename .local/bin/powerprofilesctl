@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+real_bin=/usr/bin/powerprofilesctl
+
+if [[ ${1-} == "set" && ( ${2-} == "low-power" || ${2-} == "power-saver" ) ]]; then
+  sudo -n /usr/local/bin/reload-thinkpad-acpi
+  sleep 1
+  shift 2
+  exec "$real_bin" set power-saver "$@"
+fi
+
+exec "$real_bin" "$@"

@@ -1,0 +1,11 @@
+[Unit]
+Description=Use power-saver as the default power profile
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/levi/.local/bin/powerprofilesctl set low-power
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical-session.target
